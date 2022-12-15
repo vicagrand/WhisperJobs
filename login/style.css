@@ -1,6 +1,24 @@
 @import url("http://fonts.googleapis.com/css?family=Nunito:400,900|Monserrat|Roboto");
 
+.war{
+	font-size: 1em;
+    color: #175ec8;
+    letter-spacing: 1px;
+    font-weight: 600;
+	text-decoration: underline;
+	margin-top: 75px;
+	left:630px;
+	
+}
+.warning{
+	font-size: 1em;
+    color: #175ec8;
+    letter-spacing: 1px;
+    font-weight: 600;
+	text-decoration: underline;
+	margin-top: 90px;
 
+}
 
 
 
@@ -408,8 +426,5 @@ ul.short_w3ls li a {
 .footer_grids {
 	margin: 3em 0 0 0;
 } 
-.warning {
-	color: green;
-	font-size: 50px;
-  }
+
 
