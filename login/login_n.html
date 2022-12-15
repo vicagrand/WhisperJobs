@@ -14,7 +14,7 @@
 </head>
 
 <body>
-
+	<script src="script.js"></script>
 	<div class="inner_page_agile">
 		<h3>Login</h3>
 		<p>Members log-in</p>
@@ -40,13 +40,14 @@
 				<div class="signin-form">
 					<div class="login-form-rec">
 						<form action="#" method="post">
-							<input type="email" name="email" placeholder="E-mail" required="">
-							<input type="password" name="password" placeholder="Password" required="">
+							<input id="email_username" type="email" name="email" placeholder="E-mail" required="">
+							<input id="Password" type="password" name="password" placeholder="Password" required="">
 							<div class="tp">
-								<a href="myprofile.html">
+								<!-- <a href="myprofile.html"> -->
+									
+								  <button id="loginBtn">Login</button>
 								
-								  <input type="button" value="Login">
-								</a>
+								<label class="warning" id="id_warning"></label>
 								  
 							
 							</div>

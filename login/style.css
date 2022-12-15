@@ -408,4 +408,8 @@ ul.short_w3ls li a {
 .footer_grids {
 	margin: 3em 0 0 0;
 } 
+.warning {
+	color: green;
+	font-size: 50px;
+  }
 

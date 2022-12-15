@@ -8,13 +8,13 @@
     <title>Register Page</title>
 	<link rel="stylesheet" href="style.css" />
 	<link rel="stylesheet" href="bootstrap.css" />
-	<script src="script.js"></script>
+	
 
 </head>
 
 
 <body>
-	
+	<script src="script.js"></script>
 	<div class="inner_page_agile">
 		<h3>Register</h3>
 		<p>New account for Student or Graduate</p>
@@ -41,14 +41,33 @@
 					<form class="signup-form">
 						<h2 class="text-center">SIGN-UP NOW</h2>
 						<hr>
-						<div class="form-group"> <input type="text" class="form-control" placeholder="Full_Name" required="required" id="name"> </div>
-						<div class="form-group"> <input type="email" class="form-control" placeholder="Email Address" required="required"id="email"> </div>
-						<div class="form-group"> <input type="text" class="form-control" placeholder="User_Name" required="required"id="user"> </div>
-						<div class="form-group"> <input type="text" class="form-control" placeholder="Password" required="required"id="password"> </div>
-						<div class="form-group"> <input type="text" class="form-control" placeholder="confirm_Password" required="required"id="confirm"> </div>
+						<div class="form-group"> <input type="text" class="form-control" placeholder="Full_Name" required="required" id="full_name"> </div>
+						<div class="form-group"> <input type="email" class="form-control" placeholder="Email Address" required="required"id="email_username"> </div>
+						<div class="form-group"> <input type="text" class="form-control" placeholder="Password" required="required"id="Password"> </div>
+						<div class="form-group"> <input type="text" class="form-control" placeholder="confirm_Password" required="required"id="confirm_password"> </div>
+						<div class="form-group"> <select
+							id="type"
+							class="indetails"
+							type="text"
+							required>
+							<option value="">
+							  User type
+							</option>
+							<option value="student_graduate">
+							  Student/Graduate
+							</option>
+							<option value="hr">
+							  HR
+							</option>
+							<option value="inspector">
+							  Inspector
+							</option>
+						  </select>
+						</div>
 						<div class="form-group text-center"> 
 						
-							<button  id="add_btn" type="submit" class="btn btn-blue btn-block">Start Now</button> </div>
+							<button  id="signupbtn" type="submit" class="btn btn-blue btn-block">Start Now</button> </div>
+							<label class="warning" id="id_warning"></label>
 						<ul id="id_ul"></ul>
 					</form>
 				</div>
