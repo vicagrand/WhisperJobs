@@ -42,16 +42,16 @@ h2{
 	
 }
 
-.signup-form .form-control{
+.signup-form .form-control .indetails{
 	font-size: 16px;
 	padding: 10px 15px;
-	color: rgb(203, 203, 203);
+	color: rgb(36, 35, 35);
 	background-color: rgb(255, 255, 255);
 	border-radius: 3px;
 }
 
 .signup-form input{
-	border: 1px solid #eee;
+	border: 1px solid rgb(180, 180, 180);
 	height: 38px;
 	box-shadow: none !important
 } 
@@ -156,7 +156,7 @@ h3.tittle {
 	border: none;
 	letter-spacing: 1px;
 	text-align: left;
-	background: #e3eeff;
+	background: #000000;
 	min-height: 33px;
 	border-bottom: 2px solid #628ecf ;
 } 
@@ -188,7 +188,7 @@ h3.tittle {
 } 
 
 
-.signin-form input[type="button"] {
+.logbtn {
 	outline: none;
 	padding: 0.8em 0;
 	width: 100%;
@@ -203,7 +203,7 @@ h3.tittle {
 	box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
-.signin-form input[type="button"]:hover {
+.logbtn:hover {
 	color: #fff;
 	background: #f094a4;
 	transition: .5s all;
