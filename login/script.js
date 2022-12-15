@@ -1,6 +1,7 @@
-let arr_students = [];
-let arr_hr = [];
-let arr_inspector = [];
+let arr_students =
+  JSON.parse(localStorage.getItem("Students and Graduates")) || [];
+let arr_hr = JSON.parse(localStorage.getItem("HR")) || [];
+let arr_inspector = JSON.parse(localStorage.getItem("Inspectors")) || [];
 window.onload = function () {
   declareEvents();
   checkLocal();
@@ -13,16 +14,20 @@ const checkLocal = function () {
     arr_students = JSON.parse(localStorage["HR"]);
     console.log(arr_hr);
   } else if (localStorage["Inspectors"]) {
-    arr_students = JSON.parse(localStorage["Inspectors"]);
+    arr_inspector = JSON.parse(localStorage["Inspectors"]);
     console.log(arr_inspector);
   }
 };
 
 const declareEvents = function () {
   let add_btn = document.querySelector("#signupbtn");
-  add_btn.addEventListener()
   add_btn.addEventListener("click", function () {
-    if (document.querySelector("#email_username").value.includes("sce")) {
+    id_warning.innerHTML = "";
+
+    event.preventDefault();
+    if (
+      document.querySelector("#email_username").value.includes("@ac.sce.ac.il")
+    ) {
       let obj = {
         username: document.querySelector("#email_username").value,
         full_name: document.querySelector("#full_name").value,
@@ -30,6 +35,35 @@ const declareEvents = function () {
         confirm_password: document.querySelector("#confirm_password").value,
         type: document.querySelector("#type").value,
       };
+      if (obj.password != obj.confirm_password) {
+        let warning = "Passwords do not match!";
+        id_warning.innerHTML += `${warning}`;
+
+        return;
+      }
+      let flag = 0;
+      arr_students.forEach((element) => {
+        if (element["username"] == obj.username) {
+          flag = 1;
+        }
+      });
+      arr_inspector.forEach((element) => {
+        if (element["username"] == obj.username) {
+          flag = 1;
+        }
+      });
+
+      arr_hr.forEach((element) => {
+        if (element["username"] == obj.username) {
+          flag = 1;
+        }
+      });
+      if (flag == 1) {
+        let warning = "Account already exists!";
+        id_warning.innerHTML += `${warning}`;
+        return;
+      }
+
       if (obj.type == "student_graduate") {
         arr_students.push(obj);
         localStorage.setItem(
@@ -38,69 +72,19 @@ const declareEvents = function () {
         );
       } else if (obj.type == "hr") {
         arr_hr.push(obj);
+
         localStorage.setItem("HR", JSON.stringify(arr_hr));
       } else if (obj.type == "inspector") {
         arr_inspector.push(obj);
         localStorage.setItem("Inspectors", JSON.stringify(arr_inspector));
       }
-
-      createStudents();
+      window.location.href =
+        "file:///C:/Users/Yonatan/Documents/%D7%9C%D7%99%D7%9E%D7%95%D7%93%D7%99%D7%9D/%D7%A1%D7%9E%D7%A1%D7%98%D7%A8%20%D7%92/%D7%99%D7%A1%D7%95%D7%93%D7%95%D7%AA/%D7%A4%D7%A8%D7%95%D7%99%D7%99%D7%A7%D7%98/finalproject/supersuperproject/login/login_n.html";
     }
+
     elseif: {
       let warning = "you are not a student!";
       id_warning.innerHTML += `${warning}`;
     }
   });
 };
-// function checkDetails() {
-//   if ((password = !confirm_password)) {
-//   }
-// }
-const userlogin = function () {
-  let add_btn = document.querySelector("#loginBtn");
-  add_btn.addEventListener("click", function () {
-  const loginEmail = document.getElementById('email_username').value
-  const loginPass = document.getElementById('Password').value
-  let flag=0;
-for(const i of arr_hr){
-  if(arr_hr[i].username == loginEmail && arr_hr[i].password == loginPass){
-    flag=1;
-  }
-}
-for(const i of arr_inspector){
-  if(localStorage.getItem("Inspectors")[i].username == loginEmail && localStorage.getItem("Inspectors")[i].password == loginPass){
-    flag=1;
-  }
-}
-for(const i of arr_students){
-  if(arr_students[i].username == loginEmail && arr_students[i].password == loginPass){
-    flag=1;
-  }
-}
-if(flag==1){
-  let warning = "login succesful";
-  id_warning.innerHTML += `${warning}`;
-  window.location.assign("/login/register.html")
-}
-else {
-  let warning = "Wrong credentials";
-  id_warning.innerHTML += `${warning}`;    
-}
-  // if (localStorage.getItem('Students and Graduate')||localStorage.getItem('HR')||localStorage.getItem('Inspectors')) {
-  //     const loginDeets = JSON.parse(localStorage.getItem('Students and Graduate'))
-  //     if (loginEmail === loginDeets.email && loginPass === loginDeets.password) {
-  //       let warning = "login succesful";
-  //       id_warning.innerHTML += `${warning}`;
-  //     } else {
-  //       let warning = "Wrong credentials";
-  //       id_warning.innerHTML += `${warning}`;
-         
-  //     }
-  // } else {
-  //     let warning = "Not a registered user";
-  //     id_warning.innerHTML += `${warning}`;
-
-  // }
-  })}
-
-
