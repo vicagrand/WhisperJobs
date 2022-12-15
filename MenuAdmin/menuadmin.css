@@ -17,6 +17,19 @@ h1,h2,h3,h4,h5,h6 {
 	font-family: "Monserrat", sans-serif;;
 }
 
+
+p {
+	margin: 0;
+	letter-spacing: 1px;
+	font-size: 0.9em;
+	color:#595a5a
+}
+
+ul {
+	margin: 0;
+	padding: 0;
+}
+
 h3.tittle {
 	color: #74abff;
 	margin: 0;
@@ -26,6 +39,10 @@ h3.tittle {
 	text-align: center;
 	text-shadow: 0 1px 2px rgba(0, 0, 0, 0.33);
 }
+
+.inner_sec_grids_info_w3ls {
+	margin-top: 4em;
+} 
 
 .inner_page_agile {
 	text-align: center;
@@ -38,6 +55,7 @@ h3.tittle {
 	min-height: 255px;
 	padding-top: 6em;
 }
+
 .inner_page_agile h3 {
 	color: #628ecf;
 	text-transform: uppercase;
@@ -55,7 +73,6 @@ h3.tittle {
 	margin-top: 10px;
 	font-family: "Monserrat", sans-serif;
 } 
-
 .services-breadcrumb_w3layouts {
 	width: 100%;
 	margin-top: -50px;
@@ -85,7 +102,7 @@ h3.tittle {
 ul.short_w3ls li {
 	list-style: none;
 	display: inline-block;
-  text-indent: 70px;
+  text-indent: 100px;
 }
 
 .inner_breadcrumb {
@@ -99,84 +116,89 @@ ul.short_w3ls li a {
 }
 
 
-
-.text-center{
-    color: #628ecf;
+.about{
+    color:#628ecf;
     text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
-
-.panel{
-    width: 80%;
-    margin: 50px auto;
-    background: #e2eaf6;
-    height: 550px;
+.us{
+    color:#413467e0;
+    padding: 20px;
+    width: 700px;
+    margin-left: 320px;
+    font-size: 20px;
 }
+ 
 
 
-.search{
-    color:#628ecf;
-    font-size: large;
-    height:10px;
-}
 
-.info{
-    color:#628ecf;
-    word-spacing: 3px;
-}
-
-.form-group{
-    color:#628ecf;
-}
-
-input[type="text"]{
-    width:100%;
-    height:30px;
-    border:#ecc3c9;
-    box-sizing: 3px;
-}
-
-/* .btnadd{
-    color:#628ecf;
-    width:50px;
-} */
-
-/* .center{
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #000;
-} */
-
-.btnadd{
-    height: 35px;
-    width: 120px;
-    border: 1px solid #3c67e3;
-    border-radius: 6px;
-    background-color: transparent;
-    color:#102563;
-    font-size: 14px;
-    margin-top:10px;
-
-}
-
-.btnadd:hover{
-    animation: pulse 1s ease-in-out;
-}
-
-@keyframes pulse {
-
-    0%{
-        box-shadow: 
-        0 0 25px #86e5ff,
-        0 0 50px #8d43fc;
-        ;
+@keyframes move_wave {
+    0% {
+        transform: translateX(0) translateZ(0) scaleY(1)
     }
-
+    50% {
+        transform: translateX(-25%) translateZ(0) scaleY(0.55)
+    }
+    100% {
+        transform: translateX(-50%) translateZ(0) scaleY(1)
+    }
 }
-
-@media (min-width: 768px) and (max-width: 992px){
-    .form-inline .form-control {
-     width: 150px;   
-    }  
-} 
+.waveWrapper {
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    margin: auto;
+}
+.waveWrapperInner {
+    position: absolute;
+    width: 100%;
+    overflow: hidden;
+    height: 100%;
+    bottom: -1px;
+    background-image: linear-gradient(to top, #b659a91b 20%, #27273c00 80%);
+}
+.bgTop {
+    z-index: 15;
+    opacity: 0.5;
+}
+.bgMiddle {
+    z-index: 10;
+    opacity: 0.75;
+}
+.bgBottom {
+    z-index: 5;
+}
+.wave {
+    position: absolute;
+    left: 0;
+    width: 200%;
+    height: 100%;
+    background-repeat: repeat no-repeat;
+    background-position: 0 bottom;
+    transform-origin: center bottom;
+}
+.waveTop {
+    background-size: 50% 100px;
+}
+.waveAnimation .waveTop {
+  animation: move-wave 3s;
+   -webkit-animation: move-wave 3s;
+   -webkit-animation-delay: 1s;
+   animation-delay: 1s;
+}
+.waveMiddle {
+    background-size: 50% 120px;
+}
+.waveAnimation .waveMiddle {
+    animation: move_wave 10s linear infinite;
+}
+.waveBottom {
+    background-size: 50% 100px;
+}
+.waveAnimation .waveBottom {
+    animation: move_wave 15s linear infinite;
+}
