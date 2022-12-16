@@ -3,14 +3,9 @@ let arr_students =
 let arr_hr = JSON.parse(localStorage.getItem("HR")) || [];
 let arr_inspector = JSON.parse(localStorage.getItem("Inspectors")) || [];
 
-// window.onload = function () {
-//   userlogin();
-// };
-// const userlogin = function () {
-// let add_btn = document.getElementById("#loginBtn");
-// add_btn.addEventListener("click", function () {
 function signinaction(e) {
   event.preventDefault();
+  id_warning.innerHTML = '';
   const loginEmail = document.getElementById("email_username").value;
   const loginPass = document.getElementById("Password").value;
   let flag = 0;
@@ -18,12 +13,14 @@ function signinaction(e) {
     if (element["username"] == loginEmail && element["password"] == loginPass) {
       flag = 1;
       sessionStorage.setItem("current_user", JSON.stringify(element));
+      window.location.href = "../MenuStudent/menustudent.html";
     }
   });
   arr_inspector.forEach((element) => {
     if (element["username"] == loginEmail && element["password"] == loginPass) {
       flag = 1;
       sessionStorage.setItem("current_user", JSON.stringify(element));
+      window.location.href = "../MenuAdmin/menuadmin.html";
     }
   });
 
@@ -31,14 +28,13 @@ function signinaction(e) {
     if (element["username"] == loginEmail && element["password"] == loginPass) {
       flag = 1;
       sessionStorage.setItem("current_user", JSON.stringify(element));
+      window.location.href = "../MenuHR/menuhr.html";
     }
   });
-  if (flag == 1) {
-    window.location.href =
-      "../login/register.html";
-  } else {
+  if (flag == 0) {
     let warning = "Wrong credentials";
     id_warning.innerHTML += `${warning}`;
+    //return;
   }
   // if (localStorage.getItem('Students and Graduate')||localStorage.getItem('HR')||localStorage.getItem('Inspectors')) {
   //     const loginDeets = JSON.parse(localStorage.getItem('Students and Graduate'))
