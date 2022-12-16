@@ -35,7 +35,7 @@ function signinaction(e) {
   });
   if (flag == 1) {
     window.location.href =
-      "file:///C:/Users/Yonatan/Documents/%D7%9C%D7%99%D7%9E%D7%95%D7%93%D7%99%D7%9D/%D7%A1%D7%9E%D7%A1%D7%98%D7%A8%20%D7%92/%D7%99%D7%A1%D7%95%D7%93%D7%95%D7%AA/%D7%A4%D7%A8%D7%95%D7%99%D7%99%D7%A7%D7%98/finalproject/supersuperproject/login/register.html";
+      "../login/register.html";
   } else {
     let warning = "Wrong credentials";
     id_warning.innerHTML += `${warning}`;
