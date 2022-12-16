@@ -5,7 +5,7 @@ let arr_inspector = JSON.parse(localStorage.getItem("Inspectors")) || [];
 
 function signinaction(e) {
   event.preventDefault();
-  id_warning.innerHTML = '';
+  id_warning.innerHTML = "";
   const loginEmail = document.getElementById("email_username").value;
   const loginPass = document.getElementById("Password").value;
   let flag = 0;
@@ -28,7 +28,7 @@ function signinaction(e) {
     if (element["username"] == loginEmail && element["password"] == loginPass) {
       flag = 1;
       sessionStorage.setItem("current_user", JSON.stringify(element));
-      window.location.href = "../MenuHR/menuhr.html";
+      window.location.href = "../edit profile/editprofile.html";
     }
   });
   if (flag == 0) {
