@@ -34,6 +34,12 @@ const declareEvents = function () {
         password: document.querySelector("#Password").value,
         confirm_password: document.querySelector("#confirm_password").value,
         type: document.querySelector("#type").value,
+        //new
+        about_you:'',
+        location:'',
+        forHire:'',
+        education:'',
+        position:'',
       };
       if (obj.password != obj.confirm_password) {
         let warning = "Passwords do not match!";
