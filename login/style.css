@@ -70,10 +70,16 @@ h2{
 
 .signup-form input{
 	border: 1px solid rgb(180, 180, 180);
-	height: 38px;
-	box-shadow: none !important
+	height: 40px;
+	box-shadow: none !important;
+	width: 300px;
 } 
-
+.indetails{
+	border: 1px solid rgb(180, 180, 180);
+	height: 40px;
+	box-shadow: none !important;
+	width: 300px;
+}
 .btn-blue{
 	background: #4d84d5;
 	padding: 10px 28px;
@@ -206,7 +212,7 @@ h3.tittle {
 } 
 
 
-.logbtn {
+.loginbt {
 	outline: none;
 	padding: 0.8em 0;
 	width: 100%;
@@ -221,7 +227,7 @@ h3.tittle {
 	box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
-.logbtn:hover {
+.loginbt:hover {
 	color: #fff;
 	background: #f094a4;
 	transition: .5s all;

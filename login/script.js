@@ -22,9 +22,8 @@ const checkLocal = function () {
 const declareEvents = function () {
   let add_btn = document.querySelector("#signupbtn");
   add_btn.addEventListener("click", function () {
-    id_warning.innerHTML = "";
-
     event.preventDefault();
+    id_warning.innerHTML = "";
     if (
       document.querySelector("#email_username").value.includes("@ac.sce.ac.il")
     ) {
@@ -85,7 +84,7 @@ const declareEvents = function () {
         localStorage.setItem("Inspectors", JSON.stringify(arr_inspector));
       }
       window.location.href =
-        "file:///C:/Users/Yonatan/Documents/%D7%9C%D7%99%D7%9E%D7%95%D7%93%D7%99%D7%9D/%D7%A1%D7%9E%D7%A1%D7%98%D7%A8%20%D7%92/%D7%99%D7%A1%D7%95%D7%93%D7%95%D7%AA/%D7%A4%D7%A8%D7%95%D7%99%D7%99%D7%A7%D7%98/finalproject/supersuperproject/login/login_n.html";
+        "../login/login_n.html";
     }
 
     elseif: {
