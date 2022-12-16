@@ -354,7 +354,12 @@ h3.tittle.three {
 p.reg {
 	margin-top: 3em;
 }
-
+.email{
+  color:#000000;
+  font-size: large;
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+}
 
 .inner_page_agile {
 	text-align: center;
@@ -423,7 +428,7 @@ ul.short_w3ls li {
 	margin: 0 auto;
 }
 
-ul.short_w3ls li a {
+.home {
 	color: #74abff;
 	text-decoration: none;
 }
