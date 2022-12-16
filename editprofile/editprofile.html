@@ -63,7 +63,7 @@
               <div class="grid-65">
                 <textarea
                   name=""
-                  id=""
+                  id="aboutYou"
                   cols="30"
                   rows="auto"
                   tabindex="3"
@@ -156,7 +156,12 @@
             </fieldset>
             <fieldset>
               <!-- <input type="button" class="Btn cancel" value="Delete Account" /> -->
-              <input type="submit" class="Btn" value="Save Changes" />
+              <input
+                type="submit"
+                class="Btn"
+                onclick="updateDetails()"
+                value="Save Changes"
+              />
               <div
                 class="button"
                 onclick="document.body.classList.add('active')"
