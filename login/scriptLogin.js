@@ -28,7 +28,7 @@ function signinaction(e) {
     if (element["username"] == loginEmail && element["password"] == loginPass) {
       flag = 1;
       sessionStorage.setItem("current_user", JSON.stringify(element));
-      window.location.href = "../edit profile/editprofile.html";
+      window.location.href = "../MenuHR/menuhr.html";
     }
   });
   if (flag == 0) {

@@ -33,10 +33,8 @@ const declareEvents = function () {
         password: document.querySelector("#Password").value,
         confirm_password: document.querySelector("#confirm_password").value,
         type: document.querySelector("#type").value,
-        //new
         about_you: "",
         location: "",
-
         education: "",
         jobTitle: "",
       };

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit profile</title>
+    <link rel="stylesheet" href="editprofile.css" />
+  </head>
+  <body>
+    <script src="script.js"></script>
+    <div class="inner_page_agile">
+      <h3>Edit profile</h3>
+      <p>Here you can change your information</p>
+    </div>
+
+    <div class="services-breadcrumb_w3layouts">
+      <div class="inner_breadcrumb">
+        <ul class="short_w3ls">
+          <li><a href="index.html" class="home">Home</a><span>|</span></li>
+          <li>My profile</li>
+          <li>Job search</li>
+          <li>My positions</li>
+          <li>Status update</li>
+          <!-- <ul  class= "Logoutbtn"> -->
+          <li>
+            <span>|</span
+            ><a href="http://127.0.0.1:5500/login/login_n.html">Log out</a>
+          </li>
+          <!-- </ul> -->
+        </ul>
+      </div>
+    </div>
+
+    <div class="wrapper">
+      <div class="profile">
+        <div class="content">
+          <h1>Edit Profile</h1>
+          <form action="">
+            <!-- Photo -->
+            <fieldset>
+              <div class="grid-35">
+                <label for="avatar">Your Photo</label>
+              </div>
+              <div class="grid-65">
+                <span class="photo" title="Upload your Avatar!"></span>
+                <input type="file" class="btn" />
+              </div>
+            </fieldset>
+            <fieldset>
+              <div class="grid-35">
+                <label for="fname">Full Name</label>
+              </div>
+              <div class="grid-65">
+                <input placeholder="" type="text" id="fname" tabindex="1" />
+              </div>
+            </fieldset>
+            <!-- Description about User -->
+            <fieldset>
+              <div class="grid-35">
+                <label placeholder="" for="description">About you</label>
+              </div>
+              <div class="grid-65">
+                <textarea
+                  name=""
+                  id=""
+                  cols="30"
+                  rows="auto"
+                  tabindex="3"
+                ></textarea>
+              </div>
+            </fieldset>
+            <!-- Location -->
+            <fieldset>
+              <div class="grid-35">
+                <label for="location">Location</label>
+              </div>
+              <div class="grid-65">
+                <input placeholder="" type="text" id="location" tabindex="4" />
+              </div>
+            </fieldset>
+            <!-- Country -->
+            <fieldset>
+              <div class="grid-35">
+                <label for="country">Country</label>
+              </div>
+              <div class="grid-65">
+                <input placeholder="" type="text" id="country" tabindex="5" />
+              </div>
+            </fieldset>
+            <!-- Email -->
+            <fieldset>
+              <div class="grid-35">
+                <label for="email">Email Address</label>
+              </div>
+              <div class="grid-65">
+                <input placeholder="" type="email" id="email" tabindex="6" />
+              </div>
+            </fieldset>
+            <!-- Looking for Work -->
+            <fieldset>
+              <div class="grid-35">
+                <label for="forHire">Looking for Work</label>
+              </div>
+              <div class="grid-65">
+                <select name="work" id="forHire" tabindex="7">
+                  <option value="yes">Yes</option>
+                  <option value="no">No</option>
+                </select>
+              </div>
+            </fieldset>
+            <!-- Highest Qualification -->
+            <fieldset>
+              <div class="grid-35">
+                <label for="qualification">Highest level of Education</label>
+              </div>
+              <div class="grid-65">
+                <select name="qualification" id="qualification" tabindex="8">
+                  <option selected="selected" value="--------------" disabled>
+                    --------------
+                  </option>
+                  <option value="primary_school">
+                    Primary school or equivalent
+                  </option>
+                  <option value="high_school">High school or equivalent</option>
+                  <option value="associate">
+                    Associate degree or equivalent
+                  </option>
+                  <option value="bachelors">
+                    Bachelor's degree or equivalent
+                  </option>
+                  <option value="post_graduate">
+                    Post-graduate or equivalent
+                  </option>
+                </select>
+              </div>
+            </fieldset>
+            <!-- School -->
+            <fieldset>
+              <div class="grid-35">
+                <label for="school">School Name</label>
+              </div>
+              <div class="grid-65">
+                <input placeholder="" type="text" id="school" tabindex="9" />
+              </div>
+            </fieldset>
+
+            <!-- Job Position -->
+            <fieldset>
+              <div class="grid-35">
+                <label for="position">Job Title</label>
+              </div>
+              <div class="grid-65">
+                <input placeholder="" type="text" id="position" tabindex="11" />
+              </div>
+            </fieldset>
+            <fieldset>
+              <!-- <input type="button" class="Btn cancel" value="Delete Account" /> -->
+              <input type="submit" class="Btn" value="Save Changes" />
+              <div
+                class="button"
+                onclick="document.body.classList.add('active')"
+              >
+                <span class="button-text">Delete</span>
+                <div class="button-backgrounds"></div>
+              </div>
+
+              <div class="popup">
+                <div class="content2-wrapper">
+                  <h2 class="text">Are you sure to delete your account?</h2>
+                  <button class="btn-7" id="Sure">Yes</button>
+                  <button class="btn-7">No</button>
+                </div>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
