@@ -6,6 +6,16 @@ window.onload = function () {
 displayProfile = function () {
   let full_name = user.full_name;
   document.getElementById("fname").placeholder = `${full_name}`;
+  let about_you = user.about_you;
+  document.getElementById("aboutYou").placeholder = `${about_you}`;
+  let location = user.location;
+  document.getElementById("location").placeholder = `${location}`;
+  let username = user.username;
+  document.getElementById("email").innerHTML += `${username}`;
+  let education = user.education;
+  document.getElementById("qualification").placeholder = `${education}`;
+  let jobTitle = user.jobTitle;
+  document.getElementById("position").placeholder = `${jobTitle}`;
 
   //   let about_you = current_user.about_you
   //   ayou.innerHTML += `${about_you}`;
