@@ -28,7 +28,7 @@ function signinaction(e) {
     if (element["username"] == loginEmail && element["password"] == loginPass) {
       flag = 1;
       sessionStorage.setItem("current_user", JSON.stringify(element));
-      window.location.href = "../MenuHR/menuhr.html";
+      window.location.href = "../edit profile/editprofile.html";
     }
   });
   if (flag == 0) {
@@ -53,3 +53,30 @@ function signinaction(e) {
   // }
 }
 // };
+
+function changepassword(e) {
+  event.preventDefault();
+  const email = document.getElementById('emailUser').value;
+  const question = document.getElementById('safetyQuestion').value;
+  const newpassword = document.getElementById('newPassword').value;
+  const confirmpassword = document.getElementById('confirmPassword').value;
+  if (email == "" || question == "" || confirmpassword == "" || newpassword == "") {
+    document.getElementById('texto').innerHTML ="Please fill all the details";
+  }
+  else if (newpassword != confirmpassword) {
+    document.getElementById('texto').innerHTML ="password mismatch";
+  }
+  else{
+  let arr_students =
+      JSON.parse(localStorage.getItem("Students and Graduates")) || []; 
+      for (let key in arr_students) {
+      if (arr_students[key].username == email && arr_students[key].question == question){
+        arr_students[key].password=newpassword;
+        arr_students[key].confirm_password=confirmpassword;
+        localStorage.setItem( "Students and Graduates",JSON.stringify(arr_students));  
+                
+      }
+    }
+  }
+  
+  }
