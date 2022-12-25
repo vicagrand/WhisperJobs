@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../My_Profile"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "login"
+	}
+}

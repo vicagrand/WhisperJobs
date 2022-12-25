@@ -14,7 +14,7 @@
 </head>
 
 <body>
-	<script src="scriptLogin.js"></script>
+
 	<div class="inner_page_agile">
 		<h3>Login</h3>
 		<p>Members log-in</p>
@@ -24,7 +24,7 @@
 	<div class="services-breadcrumb_w3layouts">
 		<div class="inner_breadcrumb">
 			<ul class="short_w3ls"_w3ls>
-				<li><a href="http://127.0.0.1:5500/login/login_n.html">Home</a><span>|</span></li>
+				<li><a href="index.html">Home</a><span>|</span></li>
 				<li>Login</li>
 			</ul>
 		</div>
@@ -39,25 +39,17 @@
 			<div class="inner_sec_grids_info_w3ls">
 				<div class="signin-form">
 					<div class="login-form-rec">
-						<form action="#" onsubmit="signinaction()" method="post">
-							<input id="email_username" type="email" name="email" placeholder="E-mail" required="">
-							<input id="Password" type="password" name="password" placeholder="Password" required="">
+						<form action="#" method="post">
+							<input type="email" name="email" placeholder="E-mail" required="">
+							<input type="password" name="password" placeholder="Password" required="">
 							<div class="tp">
-								<!-- <a href="myprofile.html"> -->
-									
-								<button class="loginbt" type="submit" id="loginBtn">Login</button>								
-								<label class="warning" id="id_warning"></label>
-								  
-							
+								<input type="submit" value="Login">
 							</div>
-					
 						</form>
 					</div>
-					
-
 					<div class="login-social-grids">
 						<ul>
-							<p><a href="changepassword.html"> Forgot your password?</a></p>
+							<p><a href="register.html"> Forgot your password?</a></p>
 						</ul>
 					</div>
 					<p><a href="register.html"> Don't have an account?</a></p>
