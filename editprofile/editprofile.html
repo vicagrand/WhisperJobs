@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="editprofile.css" />
   </head>
   <body>
+    <script src="generalScript.js"></script>
     <script src="script.js"></script>
     <div class="inner_page_agile">
       <h3>Edit profile</h3>
@@ -25,7 +26,7 @@
           <!-- <ul  class= "Logoutbtn"> -->
           <li>
             <span>|</span
-            ><a href="http://127.0.0.1:5500/login/login_n.html">Log out</a>
+            ><a onclick="logout()" href="../login/login_n.html">Log out</a>
           </li>
           <!-- </ul> -->
         </ul>
@@ -63,7 +64,7 @@
               <div class="grid-65">
                 <textarea
                   name=""
-                  id=""
+                  id="about_you"
                   cols="30"
                   rows="auto"
                   tabindex="3"
@@ -77,15 +78,6 @@
               </div>
               <div class="grid-65">
                 <input placeholder="" type="text" id="location" tabindex="4" />
-              </div>
-            </fieldset>
-            <!-- Country -->
-            <fieldset>
-              <div class="grid-35">
-                <label for="country">Country</label>
-              </div>
-              <div class="grid-65">
-                <input placeholder="" type="text" id="country" tabindex="5" />
               </div>
             </fieldset>
             <!-- Email -->
@@ -135,16 +127,6 @@
                 </select>
               </div>
             </fieldset>
-            <!-- School -->
-            <fieldset>
-              <div class="grid-35">
-                <label for="school">School Name</label>
-              </div>
-              <div class="grid-65">
-                <input placeholder="" type="text" id="school" tabindex="9" />
-              </div>
-            </fieldset>
-
             <!-- Job Position -->
             <fieldset>
               <div class="grid-35">
@@ -156,7 +138,7 @@
             </fieldset>
             <fieldset>
               <!-- <input type="button" class="Btn cancel" value="Delete Account" /> -->
-              <input type="submit" class="Btn" value="Save Changes" />
+              <a class="butNone" onclick="updateDetails()"><input type="submit" class="Btn" value="Save Changes" /></a></fieldset>
               <div
                 class="button"
                 onclick="document.body.classList.add('active')"
@@ -168,7 +150,7 @@
               <div class="popup">
                 <div class="content2-wrapper">
                   <h2 class="text">Are you sure to delete your account?</h2>
-                  <button class="btn-7" id="Sure">Yes</button>
+                  <a class="butNone" onclick="removeUser()"><button class="btn-7" id="Sure" >Yes</button></a>
                   <button class="btn-7">No</button>
                 </div>
               </div>
