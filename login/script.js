@@ -37,6 +37,7 @@ const declareEvents = function () {
         location: "",
         education: "",
         jobTitle: "",
+        lookingForWork: "",
       };
       if (obj.password != obj.confirm_password) {
         let warning = "Passwords do not match!";
@@ -81,6 +82,7 @@ const declareEvents = function () {
         arr_inspector.push(obj);
         localStorage.setItem("Inspectors", JSON.stringify(arr_inspector));
       }
+
       window.location.href = "../login/login_n.html";
     }
 
