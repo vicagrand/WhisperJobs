@@ -41,25 +41,10 @@ function signinaction(event) {
     id_warning.innerHTML += `${warning}`;
     return;
   }
-  // if (localStorage.getItem('Students and Graduate')||localStorage.getItem('HR')||localStorage.getItem('Inspectors')) {
-  //     const loginDeets = JSON.parse(localStorage.getItem('Students and Graduate'))
-  //     if (loginEmail === loginDeets.email && loginPass === loginDeets.password) {
-  //       let warning = "login succesful";
-  //       id_warning.innerHTML += `${warning}`;
-  //     } else {
-  //       let warning = "Wrong credentials";
-  //       id_warning.innerHTML += `${warning}`;
-
-  //     }
-  // } else {
-  //     let warning = "Not a registered user";
-  //     id_warning.innerHTML += `${warning}`;
-
-  // }
 }
 // };
 
-function changepassword(e) {
+function changepassword(event) {
   event.preventDefault();
   const email = document.getElementById('emailUser').value;
   const question = document.getElementById('safetyQuestion').value;
@@ -85,3 +70,8 @@ function changepassword(e) {
   }
   
   }
+
+  module.exports = {
+    signinaction: signinaction,
+    changepassword: changepassword
+  };

@@ -1,28 +1,20 @@
 {
-  "name": "superproject",
-  "description": "the only project group 15 has ever made!!",
+  "name": "my-project",
   "version": "1.0.0",
-  "main": "index.js",
-  "directories": {
-    "test": "tests"
+  "scripts": {
+    "test": "jest"
   },
   "devDependencies": {
-    "karma": "^6.4.1",
-    "karma-chrome-launcher": "^3.1.1",
-    "karma-qunit": "^4.1.2",
-    "qunit": "^2.19.3"
+    "jest": "^26.6.3"
   },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "jest": {
+    "transform": {
+      "^.+\\.jsx?$": "babel-jest"
+    }
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/vicagrand/supersuperproject.git"
+  "dependencies": {
+    "@babel/core": "^7.20.7",
+    "babel-jest": "^29.3.1"
   },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/vicagrand/supersuperproject/issues"
-  },
-  "homepage": "https://github.com/vicagrand/supersuperproject#readme"
+  "setupTestFrameworkScriptFile":"./tests/setupTests.js"
 }

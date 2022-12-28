@@ -1,12 +1,12 @@
-let arr_students =
-  JSON.parse(localStorage.getItem("Students and Graduates")) || [];
+//register
+let arr_students = JSON.parse(localStorage.getItem("Students and Graduates")) || [];
 let arr_hr = JSON.parse(localStorage.getItem("HR")) || [];
 let arr_inspector = JSON.parse(localStorage.getItem("Inspectors")) || [];
 window.onload = function () {
   declareEvents();
   checkLocal();
 };
-const checkLocal = function () {
+function checkLocal() {
   if (localStorage["Students and Graduates"]) {
     arr_students = JSON.parse(localStorage["Students and Graduates"]);
     console.log(arr_students);
@@ -19,7 +19,7 @@ const checkLocal = function () {
   }
 };
 
-const declareEvents = function () {
+function declareEvents () {
   let add_btn = document.querySelector("#signupbtn");
   add_btn.addEventListener("click", function () {
     event.preventDefault();
@@ -94,4 +94,9 @@ const declareEvents = function () {
       id_warning.innerHTML += `${warning}`;
     }
   });
+};
+
+module.exports = {
+  checkLocal: checkLocal,
+  declareEvents: declareEvents
 };
