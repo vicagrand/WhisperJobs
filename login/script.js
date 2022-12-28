@@ -32,11 +32,15 @@ const declareEvents = function () {
         full_name: document.querySelector("#full_name").value,
         password: document.querySelector("#Password").value,
         confirm_password: document.querySelector("#confirm_password").value,
+        question: document.querySelector("#Safety_question").value,
         type: document.querySelector("#type").value,
+        //new
         about_you: "",
         location: "",
+
         education: "",
         jobTitle: "",
+        lookingForWork: "",
       };
       if (obj.password != obj.confirm_password) {
         let warning = "Passwords do not match!";
@@ -81,6 +85,7 @@ const declareEvents = function () {
         arr_inspector.push(obj);
         localStorage.setItem("Inspectors", JSON.stringify(arr_inspector));
       }
+
       window.location.href = "../login/login_n.html";
     }
 
