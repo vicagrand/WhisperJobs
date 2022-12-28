@@ -3,7 +3,7 @@ let arr_students =
 let arr_hr = JSON.parse(localStorage.getItem("HR")) || [];
 let arr_inspector = JSON.parse(localStorage.getItem("Inspectors")) || [];
 
-function signinaction(event) {
+function signinaction(e) {
   event.preventDefault();
   id_warning.innerHTML = "";
   const loginEmail = document.getElementById("email_username").value;
@@ -34,12 +34,7 @@ function signinaction(event) {
   if (flag == 0) {
     let warning = "Wrong credentials";
     id_warning.innerHTML += `${warning}`;
-    return;
-  }
-  else{
-    let warning = "login successful";
-    id_warning.innerHTML += `${warning}`;
-    return;
+    //return;
   }
 }
 // };
