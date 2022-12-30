@@ -4,8 +4,7 @@
   box-sizing: border-box;
 }
 
-html,
-body {
+html, body {
   margin: 0;
   font-size: 100%;
   background: linear-gradient(to right, #f3e7e9, #e3eeff);
@@ -148,4 +147,69 @@ ul.short_w3ls li a {
 }
 .inner_content_info_agileits {
   padding: 6em 0;
+}
+
+
+
+
+
+.app{
+  width:900px;
+  height:500px;
+  border:2px solid rgb(136, 122, 122);
+  border-radius: 8px;
+  padding: 15px;
+  background-color: #ffffff;
+  margin-left: 250px;
+  margin-top: 30px;
+  margin-bottom: 70px;
+  overflow-y: scroll;
+  
+}
+
+.app::-webkit-scrollbar {width:0 !important}
+
+
+#addnew {
+  display:flex;
+  background-color: #e3eeff;
+  align-items: center;
+  justify-content: space-between;
+  padding:5px 10px;
+  border-radius: 5px;
+  cursor:pointer;
+}
+
+.fa-plus{
+  background-color: #a7c8fb;
+  padding: 3px;
+  border-radius: 3px;
+}
+#tasks{
+  display: grid;
+  gap:14px;
+}
+#tasks div{
+  background-color: #faeaec;
+  border:3px solid #f0dbde;
+  padding:5px;
+  border-radius: 6px;
+  display: grid;
+  gap:6px;
+
+}
+
+.options{
+  justify-self: center;
+  display:flex;
+  gap:20px;
+}
+
+.options i{
+  cursor:pointer;
+}
+
+#msg{
+  color:red;
+
 }
