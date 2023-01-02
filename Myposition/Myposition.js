@@ -6,6 +6,9 @@ let msg = document.getElementById("msg");
 let tasks = document.getElementById("tasks");
 let add = document.getElementById("add");
 let EmailInput = document.getElementById("EmailInput");
+let cityInput = document.getElementById("CityInput");
+let filedlInput = document.getElementById("FiledInput");
+let user = JSON.parse(sessionStorage.getItem("current_user")) || [];
 
 
 form.addEventListener("submit", (e) => {
@@ -39,8 +42,10 @@ let acceptData = () => {
     data.push({
      text:textInput.value,
      date:dateInput.value,
-     description: textarea.value,
-     email: EmailInput.value,
+     description:textarea.value,
+     email:EmailInput.value,
+     city:cityInput.value,
+     filed:filedlInput.value,
     });
 
     localStorage.setItem("data",JSON.stringify(data));
@@ -53,24 +58,30 @@ let acceptData = () => {
 
 
 let createTasks = () =>{
-
-    tasks.innerHTML = "";
-
-    data.map((x,y)=>{
+    let username = user.username;
+    data.forEach((element) => {
+        if (element["email"] == username){
+        tasks.innerHTML = "";
+        data.map((x,y)=>{
         return (tasks.innerHTML += `
         <div id=${y}>
-        <span class="small text-secondary">${x.date}</span>
-        <span class="fw-bold">${x.text}</span>
-        <span class="small text-secondary">${x.city}</span>
-        <span class="small text-secondary">${x.filed}</span>
-        <p>${x.description}</p>
-        <span class="small text-secondary">${x.email}</span>
+              <span class="small text-secondary">${x.date}</span>
+              <span class="fw-bold">${x.text}</span>
+              <span class="small text-secondary">${x.city}</span>
+              <span class="small text-secondary">${x.filed}</span>
+              <p>${x.description}</p>
+              <span class="small text-secondary">${x.email}</span>
+             
     
-         
+              <span class="options">
+                <i onClick ="editTask(this)" data-bs-toggle="modal" data-bs-target="#form" class="fa fa-edit"></i>
+                <i onClick ="deleteTask(this);createTasks()" class="fa fa-trash-alt"></i>
+              </span>
             </div>
         
         `);
     })
+}})
 
 
     resetForm ();
@@ -110,13 +121,3 @@ let resetForm = () =>{
     createTasks();
     console.log(data);
 })();
-
-let search=()=>{
-    let search = document.getElementById("search").value;
-    data.forEach((element) => {
-        if (element["textInput"] == search || element["CityInput"] == search ||  element["FiledInput"] == search){
-           createTasks ();
-        }
-    })
-};
-        
