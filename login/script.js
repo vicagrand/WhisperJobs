@@ -2,8 +2,9 @@
 let arr_students = JSON.parse(localStorage.getItem("Students and Graduates")) || [];
 let arr_hr = JSON.parse(localStorage.getItem("HR")) || [];
 let arr_inspector = JSON.parse(localStorage.getItem("Inspectors")) || [];
-let warning = ''
+let warning = '';
 window.onload = function () {
+  //localStorage.clear();
   declareEvents();
   checkLocal();
 };

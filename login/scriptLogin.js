@@ -2,6 +2,7 @@ let arr_students =
   JSON.parse(localStorage.getItem("Students and Graduates")) || [];
 let arr_hr = JSON.parse(localStorage.getItem("HR")) || [];
 let arr_inspector = JSON.parse(localStorage.getItem("Inspectors")) || [];
+let warning = '';
 
 function checkPassword(password){
   //Password must be 8 to 15 characters which contain at least one lowercase letter,
@@ -11,10 +12,65 @@ function checkPassword(password){
   if(password.match(passw)){
     return true;
   }
+  warning = "The password is too weak!"
   return false;
 };
 
-function signinaction(e) {
+function checkInput(question,email,newpassword){
+  //this function iterates through all users until it finds one that matches email
+  arr_students.forEach((element) => {
+    if (element["username"] == email) {//emails are unique so if the email is equal just check for question
+      if(element["question"] == question){//if question is equal update the new password
+        element["password"] = newpassword;//update password
+        element["confirm_password"] = newpassword;
+        localStorage.setItem( "Students and Graduates",JSON.stringify(element));//update local storage
+        window.location.href = "../login/login_n.html";//move to login page
+      }
+    }
+  });
+  arr_inspector.forEach((element) => {
+    if (element["username"] == email) {
+      if(element["question"] == question){
+        element["password"] = newpassword;
+        element["confirm_password"] = newpassword;
+        localStorage.setItem( "Inspectors",JSON.stringify(element));  
+        window.location.href = "../login/login_n.html";
+      }
+      else{
+        return;
+       }
+    }
+  });
+
+  arr_hr.forEach((element) => {
+    if (element["username"] == email) {
+      if(element["question"] == question){
+      element["password"] = newpassword;
+      element["confirm_password"] = newpassword;
+      localStorage.setItem( "HR",JSON.stringify(element));  
+      window.location.href = "../login/login_n.html";
+      }
+      else{
+        return;
+      }
+    }
+  });
+  // for (let key in arr_students) {
+  //   if (arr_students[key].username == email){//emails are unique so if the email is equal just check for question
+  //     if(arr_students[key].question == question){//if question is equal update the new password
+  //     arr_students[key].password=newpassword;
+  //     arr_students[key].confirm_password=confirmpassword;
+  //     localStorage.setItem( "Students and Graduates",JSON.stringify(arr_students));  
+  //     window.location.href = "../login/login_n.html";
+  //    }
+  //    else{
+  //     return;
+  //    }
+  //   }
+  // }
+};
+
+function signinaction() {
   event.preventDefault();
   id_warning.innerHTML = "";
   let loginEmail = document.getElementById("email_username").value;
@@ -49,37 +105,31 @@ function signinaction(e) {
     //return;
   }
 };
-// };
 
-function changepassword(e) {
+function changepassword() {
   event.preventDefault();
-  const email = document.getElementById('emailUser').value;
-  const question = document.getElementById('safetyQuestion').value;
+  const email = document.getElementById('emailUser').value.toLowerCase();
+  const question = document.getElementById('safetyQuestion').value.toLowerCase();
   const newpassword = document.getElementById('newPassword').value;
   const confirmpassword = document.getElementById('confirmPassword').value;
   if (email == "" || question == "" || confirmpassword == "" || newpassword == "") {
-    document.getElementById('texto').innerHTML ="Please fill all the details";
+    warning ="Please fill all the details";
   }
   else if (newpassword != confirmpassword) {
-    document.getElementById('texto').innerHTML ="Passwords mismatch";
+    warning ="Passwords mismatch";
   }
   else if(!checkPassword(newpassword)){
-    document.getElementById('texto').innerHTML ="The password is too weak!";
+    
   }
   else{
-    for (let key in arr_students) {
-      if (arr_students[key].username == email && arr_students[key].question == question){
-        arr_students[key].password=newpassword;
-        arr_students[key].confirm_password=confirmpassword;
-        localStorage.setItem( "Students and Graduates",JSON.stringify(arr_students));  
-        window.location.href = "../login/login_n.html";
-      }
-    }
+    checkInput(question,email,newpassword);
   }
-  
-  };
+  document.getElementById('texto').innerHTML = warning;
+};
 
   module.exports = {
     signinaction: signinaction,
-    changepassword: changepassword
+    changepassword: changepassword,
+    checkPassword: checkPassword,
+    checkInput: checkInput
   };
