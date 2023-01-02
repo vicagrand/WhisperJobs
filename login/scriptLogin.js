@@ -3,10 +3,22 @@ let arr_students =
 let arr_hr = JSON.parse(localStorage.getItem("HR")) || [];
 let arr_inspector = JSON.parse(localStorage.getItem("Inspectors")) || [];
 
+// function checkPassword(password){
+//   //Password must be 8 to 15 characters which contain at least one lowercase letter,
+//   //one uppercase letter, one numeric digit, and one special character
+//   var passw = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
+  
+//   if(password.match(passw)){
+//     return true;
+//   }
+//   return false;
+// };
+
 function signinaction(e) {
   event.preventDefault();
   id_warning.innerHTML = "";
-  const loginEmail = document.getElementById("email_username").value;
+  let loginEmail = document.getElementById("email_username").value;
+  loginEmail = loginEmail.toLowerCase();
   const loginPass = document.getElementById("Password").value;
   let flag = 0;
   arr_students.forEach((element) => {
@@ -36,7 +48,7 @@ function signinaction(e) {
     id_warning.innerHTML += `${warning}`;
     //return;
   }
-}
+};
 // };
 
 function changepassword(event) {
@@ -49,8 +61,11 @@ function changepassword(event) {
     document.getElementById('texto').innerHTML ="Please fill all the details";
   }
   else if (newpassword != confirmpassword) {
-    document.getElementById('texto').innerHTML ="password mismatch";
+    document.getElementById('texto').innerHTML ="Passwords mismatch";
   }
+  // else if(checkPassword(newpassword)){
+  //   document.getElementById('texto').innerHTML ="The password is too weak!";
+  // }
   else{
   let arr_students =
       JSON.parse(localStorage.getItem("Students and Graduates")) || []; 
@@ -64,7 +79,7 @@ function changepassword(event) {
     }
   }
   
-  }
+  };
 
   module.exports = {
     signinaction: signinaction,

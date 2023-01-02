@@ -13,7 +13,29 @@ beforeEach(() => {
   arr_hr = [{username: 'hr'}];
   arr_inspector = [{username: 'inspector'}];
 });
+  describe('checkEmail', () => {
+    it('should check that an email address is valid(contains "@ac.sce.ac.il")',()=>{
+      let email = 'student1@ac.sce.ac.il';
+      expect(func.checkEmail(email)).toBe(true);
+      let email2 = 'student2@gmail.com';
+      expect(func.checkEmail(email2)).toBe(false);
+    })
+  })
 
+describe('checkPassword',() =>{
+  it('should check that Password is 8 to 15 characters which contain at least one lowercase letter,one uppercase letter, one numeric digit, and one special character',()=>{
+    let password = '12345Aa!';
+    expect(func.checkPassword(password)).toBe(true);
+    let password2 = '12345Aaa';
+    expect(func.checkPassword(password2)).toBe(false);//doesn't contain special character
+    let password3 = '12345AA!';
+    expect(func.checkPassword(password3)).toBe(false);//doesn't contain lowercase letter
+    let password4 = 'aaaaaAa!';
+    expect(func.checkPassword(password4)).toBe(false);//doesn't contain a digit
+    let password5 = '1234Aa!';
+    expect(func.checkPassword(password5)).toBe(false);//not in the required length
+  })
+})
 
   describe('declareEvents', () => {
     it('should add a click event listener to the add button', () => {

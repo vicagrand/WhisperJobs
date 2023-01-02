@@ -2,10 +2,33 @@
 let arr_students = JSON.parse(localStorage.getItem("Students and Graduates")) || [];
 let arr_hr = JSON.parse(localStorage.getItem("HR")) || [];
 let arr_inspector = JSON.parse(localStorage.getItem("Inspectors")) || [];
+let warning = ''
 window.onload = function () {
   declareEvents();
   checkLocal();
 };
+
+function checkPassword(password){
+  //Password must be 8 to 15 characters which contain at least one lowercase letter,
+  //one uppercase letter, one numeric digit, and one special character
+  var passw = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
+  
+  if(password.match(passw)){
+    return true;
+  }
+  warning = `Password is too weak!`
+  return false;
+};
+
+function checkEmail(email){
+  if(email.includes("@ac.sce.ac.il")){
+    return true
+  }
+  warning = `You are not a student!`
+  return false
+};
+
+
 function checkLocal() {
   if (localStorage["Students and Graduates"]) {
     arr_students = JSON.parse(localStorage["Students and Graduates"]);
@@ -24,15 +47,18 @@ function declareEvents () {
   add_btn.addEventListener("click", function () {
     event.preventDefault();
     id_warning.innerHTML = "";
+    let email = document.querySelector("#email_username").value;
+    email = email.toLowerCase();
+    let password = document.querySelector("#Password").value;
     if (
-      document.querySelector("#email_username").value.includes("@ac.sce.ac.il")
+      checkEmail(email) && checkPassword(password)
     ) {
       let obj = {
-        username: document.querySelector("#email_username").value,
+        username: email,
         full_name: document.querySelector("#full_name").value,
-        password: document.querySelector("#Password").value,
+        password: password,
         confirm_password: document.querySelector("#confirm_password").value,
-        question: document.querySelector("#Safety_question").value,
+        question: document.querySelector("#Safety_question").value.toLowerCase(),
         type: document.querySelector("#type").value,
         //new
         about_you: "",
@@ -88,15 +114,17 @@ function declareEvents () {
 
       window.location.href = "../login/login_n.html";
     }
-
-    elseif: {
-      let warning = "you are not a student!";
-      id_warning.innerHTML += `${warning}`;
-    }
+    id_warning.innerHTML = `${warning}`;
+    // elseif: {
+    //   let warning = "you are not a student!";
+    //   id_warning.innerHTML += `${warning}`;
+    // }
   });
 };
 
 module.exports = {
   checkLocal: checkLocal,
-  declareEvents: declareEvents
+  declareEvents: declareEvents,
+  checkEmail: checkEmail,
+  checkPassword: checkPassword
 };
