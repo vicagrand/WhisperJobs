@@ -375,7 +375,7 @@ ul.short_w3ls li {
 }
 
 .inner_breadcrumb {
-  width: 80%;
+  width: 60%;
   margin: 0 auto;
 }
 
@@ -622,7 +622,8 @@ input:focus {
   font-family: Lato;
   font-size: 35px;
   font-weight: 500;
-  margin: 5px auto 15px auto;
+  margin: 10px 10px 70px 40px;
+  
 }
 
 select {

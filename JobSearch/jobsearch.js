@@ -5,6 +5,7 @@ let textarea = document.getElementById("textarea");
 let msg = document.getElementById("msg");
 let tasks = document.getElementById("tasks");
 let add = document.getElementById("add");
+let EmailInput = document.getElementById("EmailInput");
 
 
 form.addEventListener("submit", (e) => {
@@ -39,6 +40,7 @@ let acceptData = () => {
      text:textInput.value,
      date:dateInput.value,
      description: textarea.value,
+     email: EmailInput.value,
     });
 
     localStorage.setItem("data",JSON.stringify(data));
@@ -59,6 +61,7 @@ let createTasks = () =>{
         <div id=${y}>
               <span class="fw-bold">${x.text}</span>
               <span class="small text-secondary">${x.date}</span>
+              <span class="small text-secondary">${x.email}</span>
               <p>${x.description}</p>
     
               <span class="options">
@@ -87,7 +90,8 @@ let editTask = (e) => {
 
     textInput.value = selectedTask.children[0].innerHTML;
     dateInput.value = selectedTask.children[1].innerHTML;
-    textarea.value = selectedTask.children[2].innerHTML;
+    textarea.value = selectedTask.children[3].innerHTML;
+    EmailInput.value = selectedTask.children[2].innerHTML;
 
     deleteTask(e);
 };
@@ -97,6 +101,7 @@ let resetForm = () =>{
     textInput.value = "";
     dateInput.value = "";
     textarea.value = "";
+    EmailInput.value = "";
 
 };
 
