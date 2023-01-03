@@ -11,6 +11,7 @@ let EmailInput = document.getElementById("EmailInput");
 form.addEventListener("submit", (e) => {
     e.preventDefault();
     formValidation();
+    
 }); 
 
 
@@ -111,12 +112,13 @@ let resetForm = () =>{
     console.log(data);
 })();
 
-let search=()=>{
-    let search = document.getElementById("search").value;
+function search(){
+    tasks.innerHTML = "";
+    let search = document.querySelector("#search_btn").value;
     data.forEach((element) => {
-        if (element["textInput"] == search || element["CityInput"] == search ||  element["FiledInput"] == search){
-           createTasks ();
+        if (element["text"] == search || element["city"] == search ||  element["filed"] == search){
+                  
         }
-    })
-};
+})};
+
         
