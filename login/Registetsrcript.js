@@ -1,34 +1,38 @@
 //register
-let arr_students = JSON.parse(localStorage.getItem("Students and Graduates")) || [];
+let arr_students =
+  JSON.parse(localStorage.getItem("Students and Graduates")) || [];
 let arr_hr = JSON.parse(localStorage.getItem("HR")) || [];
 let arr_inspector = JSON.parse(localStorage.getItem("Inspectors")) || [];
-let warning = '';
+let warning = "";
 window.onload = function () {
   //localStorage.clear();
   declareEvents();
   checkLocal();
 };
 
-function checkPassword(password){
+function checkPassword(password) {
   //Password must be 8 to 15 characters which contain at least one lowercase letter,
   //one uppercase letter, one numeric digit, and one special character
-  var passw = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
-  
-  if(password.match(passw)){
+  var passw =
+    /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
+
+  if (password.match(passw)) {
     return true;
   }
-  warning = `Password is too weak!`
+  warning = `Password is too weak! Click to see the requirments`;
   return false;
-};
+}
 
-function checkEmail(email){
-  if(email.includes("@ac.sce.ac.il")){
-    return true
+function checkEmail(email) {
+  if (
+    email.includes("@ac.sce.ac.il") ||
+    document.querySelector("#type").value == "hr"
+  ) {
+    return true;
   }
-  warning = `You are not a student!`
-  return false
-};
-
+  warning = `You are not a student!`;
+  return false;
+}
 
 function checkLocal() {
   if (localStorage["Students and Graduates"]) {
@@ -41,9 +45,9 @@ function checkLocal() {
     arr_inspector = JSON.parse(localStorage["Inspectors"]);
     console.log(arr_inspector);
   }
-};
+}
 
-function declareEvents () {
+function declareEvents() {
   let add_btn = document.querySelector("#signupbtn");
   add_btn.addEventListener("click", function () {
     event.preventDefault();
@@ -51,15 +55,15 @@ function declareEvents () {
     let email = document.querySelector("#email_username").value;
     email = email.toLowerCase();
     let password = document.querySelector("#Password").value;
-    if (
-      checkEmail(email) && checkPassword(password)
-    ) {
+    if (checkEmail(email) && checkPassword(password)) {
       let obj = {
         username: email,
         full_name: document.querySelector("#full_name").value,
         password: password,
         confirm_password: document.querySelector("#confirm_password").value,
-        question: document.querySelector("#Safety_question").value.toLowerCase(),
+        question: document
+          .querySelector("#Safety_question")
+          .value.toLowerCase(),
         type: document.querySelector("#type").value,
         //new
         about_you: "",
@@ -121,11 +125,11 @@ function declareEvents () {
     //   id_warning.innerHTML += `${warning}`;
     // }
   });
-};
+}
 
 module.exports = {
   checkLocal: checkLocal,
   declareEvents: declareEvents,
   checkEmail: checkEmail,
-  checkPassword: checkPassword
+  checkPassword: checkPassword,
 };
