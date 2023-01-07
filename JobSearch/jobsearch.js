@@ -6,119 +6,80 @@ let msg = document.getElementById("msg");
 let tasks = document.getElementById("tasks");
 let add = document.getElementById("add");
 let EmailInput = document.getElementById("EmailInput");
-
-
+let search_btn = document.getElementById("search_btn");
 form.addEventListener("submit", (e) => {
     e.preventDefault();
-    formValidation();
-    
+    createTasks();
 }); 
-
-
-let formValidation = () => {
-    if (textInput.value === "") {
-        console.log("failure");
-        msg.innerHTML = "Should be filled";
-    } else {
-        console.log("success");
-        msg.innerHTML = "";
-        acceptData();
-        add.setAttribute("data-bs-dismiss", "modal");
-        add.click();
+    let createTasks = () =>{
+            tasks.innerHTML = "";
+            data.map((x,y)=>{
+            return (tasks.innerHTML += `
+            <div id=${y}>
+                  <span class="small text-secondary">${x.date}</span>
+                  <span class="fw-bold">${x.text}</span>
+                  <span class="small text-secondary">${x.city}</span>
+                  <span class="small text-secondary">${x.filed}</span>
+                  <p>${x.description}</p>
+                  <span class="small text-secondary">${x.email}</span>
+                 
         
-        (()=>{
-            add.setAttribute("data-bs-dismiss", "");
-        })()
-    }
-};
-
-let data = [];
-
-
-
-let acceptData = () => {
-    data.push({
-     text:textInput.value,
-     date:dateInput.value,
-     description: textarea.value,
-     email: EmailInput.value,
-    });
-
-    localStorage.setItem("data",JSON.stringify(data));
-
-
-    console.log(data);
-
-    createTasks();
-};
-
-
-let createTasks = () =>{
-
-    tasks.innerHTML = "";
-
-    data.map((x,y)=>{
-        return (tasks.innerHTML += `
-        <div id=${y}>
-        <span class="small text-secondary">${x.date}</span>
-        <span class="fw-bold">${x.text}</span>
-        <span class="small text-secondary">${x.city}</span>
-        <span class="small text-secondary">${x.filed}</span>
-        <p>${x.description}</p>
-        <span class="small text-secondary">${x.email}</span>
+                  <span class="options">
+                    <i onClick ="editTask(this)" data-bs-toggle="modal" data-bs-target="#form" class="fa fa-edit"></i>
+                    <i onClick ="deleteTask(this);createTasks()" class="fa fa-trash-alt"></i>
+                  </span>
+                </div>
+            
+            `);
+        })
+    };
     
-         
-            </div>
-        
-        `);
-    })
+    (()=>{
+        data = JSON.parse(localStorage.getItem("data")) || [];
+        createTasks();
+        console.log(data);
+    })();
 
 
-    resetForm ();
-
-};
-
-let deleteTask = (e)=>{
-    e.parentElement.parentElement.remove();
-    data.splice(e.parentElement.parentElement.id, 1);
-    localStorage.setItem("data",JSON.stringify(data));
-    console.log(data);
-};
-
-let editTask = (e) => {
-    let selectedTask = e.parentElement.parentElement;
-
-    textInput.value = selectedTask.children[0].innerHTML;
-    dateInput.value = selectedTask.children[1].innerHTML;
-    textarea.value = selectedTask.children[3].innerHTML;
-    EmailInput.value = selectedTask.children[2].innerHTML;
-
-    deleteTask(e);
-};
 
 
-let resetForm = () =>{
-    textInput.value = "";
-    dateInput.value = "";
-    textarea.value = "";
-    EmailInput.value = "";
-
-};
-
-
-(()=>{
-    data = JSON.parse(localStorage.getItem("data")) || [];
-    createTasks();
-    console.log(data);
-})();
-
-function search(){
+function search(){ 
+    let search = search_btn.value;
     tasks.innerHTML = "";
-    let search = document.querySelector("#search_btn").value;
     data.forEach((element) => {
-        if (element["text"] == search || element["city"] == search ||  element["filed"] == search){
-                  
-        }
-})};
+         if(element["city"] == search ){
+            data.map((x,y)=>{
+                return (tasks.innerHTML += `
+                 <div id=${y}>
+                 <span class="small text-secondary">${x.date}</span>
+                 <span class="fw-bold">${x.text}</span>
+                 <span class="small text-secondary">${x.city}</span>
+                 <span class="small text-secondary">${x.filed}</span>
+                 <p>${x.description}</p>
+                 <span class="small text-secondary">${x.email}</span>
+                </div>
+               `);
+                
+            })
+                
+                }
+        })
+         
+        };
+            
+   
+        
+    
+
+console.log(data);
+
+
+
+
+
+
+
+
+ 
 
         

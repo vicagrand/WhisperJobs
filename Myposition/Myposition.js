@@ -62,15 +62,15 @@ let createTasks = () =>{
     data.forEach((element) => {
         if (element["email"] == username){
         tasks.innerHTML = "";
-        data.map((x,y)=>{
+        data.filter((element,y)=>{
         return (tasks.innerHTML += `
         <div id=${y}>
-              <span class="small text-secondary">${x.date}</span>
-              <span class="fw-bold">${x.text}</span>
-              <span class="small text-secondary">${x.city}</span>
-              <span class="small text-secondary">${x.filed}</span>
-              <p>${x.description}</p>
-              <span class="small text-secondary">${x.email}</span>
+              <span class="small text-secondary">${element.date}</span>
+              <span class="fw-bold">${element.text}</span>
+              <span class="small text-secondary">${element.city}</span>
+              <span class="small text-secondary">${element.filed}</span>
+              <p>${element.description}</p>
+              <span class="small text-secondary">${element.email}</span>
              
     
               <span class="options">
@@ -108,6 +108,7 @@ let editTask = (e) => {
 
 
 let resetForm = () =>{
+    
     textInput.value = "";
     dateInput.value = "";
     textarea.value = "";
