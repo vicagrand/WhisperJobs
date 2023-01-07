@@ -14,10 +14,8 @@ describe('signinaction', () => {
     arr_students = [element];
     window.location.href = ''; // Reset the location so we can test if it's changed
 
-    // Call the function
-    func.signinaction();
 
-    // Assert that the function redirected to the correct page
-    //expect(window.location.href).toEqual('../MenuStudent/menustudent.html');
+    //Assert that the function redirected to the correct page
+    expect(window.location.href).toEqual('../MenuStudent/menustudent.html');
   });
 });

@@ -22,21 +22,6 @@ beforeEach(() => {
     })
   })
 
-
-  describe('checkPassword',() =>{
-    it('should check that Password is 8 to 15 characters which contain at least one lowercase letter,one uppercase letter, one numeric digit, and one special character',()=>{
-      let password = '12345Aa!';
-      expect(func.checkPassword(password)).toBe(true);
-      let password2 = '12345Aaa';
-      expect(func.checkPassword(password2)).toBe(false);//doesn't contain special character
-      let password3 = '12345AA!';
-      expect(func.checkPassword(password3)).toBe(false);//doesnt contain lowercase letter
-      let password4 = 'aaaaaAa!';
-      expect(func.checkPassword(password4)).toBe(false);//doesnt contain a digit
-      let password5 = '1234Aa!';
-      expect(func.checkPassword(password5)).toBe(false);//not in the required length
-    })
-});
 describe('checkPassword', () => {
     it('should return true for a valid password', () => {
         // Set up the test
@@ -102,7 +87,7 @@ describe('checkPassword', () => {
 });
 
   describe('declareEvents', () => {
-    it('should add a click event listener to the add button', () => {
+    it('should add a click event listener to the add button(sign-up on click)', () => {
       // Set up a mock add button element
       const addButton = document.createElement('button');
       addButton.id = 'signupbtn';
