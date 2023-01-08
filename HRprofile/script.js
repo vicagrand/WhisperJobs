@@ -3,7 +3,7 @@ let user = JSON.parse(sessionStorage.getItem("current_user")) || [];
 window.onload = function () {
   displayProfile();
 };
-displayProfile = function () {
+function displayProfile() {
   let full_name = user.full_name;
   document.getElementById("fname").placeholder = `${full_name}`;
   let about_you = user.about_you;
@@ -119,3 +119,8 @@ function removeUser() {
 function logout() {
   sessionStorage.removeItem("current_user");
 }
+
+module.exports = {
+  displayProfile: displayProfile,
+  updateDetails: updateDetails
+};

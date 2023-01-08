@@ -57,7 +57,7 @@ function checkInput(question,email,newpassword){
   });
 };
 
-function signinaction(e) {
+function signinaction(event) {
   event.preventDefault();
   id_warning.innerHTML = "";
   let loginEmail = document.getElementById("email_username").value;
@@ -93,7 +93,7 @@ function signinaction(e) {
   }
 };
 
-function changepassword() {
+function changepassword(event) {
   event.preventDefault();
   const email = document.getElementById('emailUser').value.toLowerCase();
   const question = document.getElementById('safetyQuestion').value.toLowerCase();
