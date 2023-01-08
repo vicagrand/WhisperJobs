@@ -55,22 +55,9 @@ function checkInput(question,email,newpassword){
       }
     }
   });
-  // for (let key in arr_students) {
-  //   if (arr_students[key].username == email){//emails are unique so if the email is equal just check for question
-  //     if(arr_students[key].question == question){//if question is equal update the new password
-  //     arr_students[key].password=newpassword;
-  //     arr_students[key].confirm_password=confirmpassword;
-  //     localStorage.setItem( "Students and Graduates",JSON.stringify(arr_students));  
-  //     window.location.href = "../login/login_n.html";
-  //    }
-  //    else{
-  //     return;
-  //    }
-  //   }
-  // }
 };
 
-function signinaction() {
+function signinaction(e) {
   event.preventDefault();
   id_warning.innerHTML = "";
   let loginEmail = document.getElementById("email_username").value;

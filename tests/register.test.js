@@ -1,7 +1,7 @@
 //import './setupTests.js';
 //const declareEvents = require('../login/script');
 //const checkLocal = require('../login/script');
-const func = require('../login/script');
+const func = require('../login/Registerscript');
 //const { JSDOM } = require('jsdom');
 
 let arr_students;

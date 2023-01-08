@@ -1,4 +1,4 @@
-const func = require('../editprofile/script');
+const func = require('../HRprofile/script');
 
 it('should update the user details in local storage and session storage', () => {
     // Set up the DOM for testing
@@ -20,17 +20,17 @@ it('should update the user details in local storage and session storage', () => 
       education: 'Test qualification',
       jobTitle: 'Test position',
       lookingForWork: 'Yes',
-      type: 'student_graduate'
+      type: 'hr'
     };
   
     // Set the user in session storage and local storage
     sessionStorage.setItem('current_user', JSON.stringify(user));
-    localStorage.setItem('Students and Graduates', JSON.stringify(user));
+    localStorage.setItem('HR', JSON.stringify(user));
     // Call the updateDetails function
     func.updateDetails();
   
     // Get the updated user from local storage
-    const updatedUser = JSON.parse(localStorage.getItem('Students and Graduates'))[0];
+    const updatedUser = JSON.parse(localStorage.getItem('HR'))[0];
   
     // Assert that the user details
     

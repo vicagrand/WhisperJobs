@@ -117,7 +117,6 @@ function removeUser() {
 //   position.innerHTML += `${job}`;
 
 module.exports = {
-  removeUser: removerUser,
   displayProfile: displayProfile,
   updateDetails: updateDetails
 };

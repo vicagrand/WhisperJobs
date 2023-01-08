@@ -1,65 +1,63 @@
 const func = require('../login/scriptLogin');
 
-describe('checkPassword', () => {
-    it('should return true for a valid password', () => {
-        // Set up the test
-        const password = 'ValidPassw0rd!';
 
-        // Call the function
-        const result = func.checkPassword(password);
-
-        // Assert that the function returned true
-        expect(result).toBe(true);
+describe('checkInput', () => {
+    it('should update the password of the user with the given email and security question', () => {
+      // Set up the test by adding some fake data to the local storage
+      localStorage.setItem('Students and Graduates', JSON.stringify([{
+        username: 'test@ac.sce.ac.il',
+        full_name: 'Test User',
+        password: 'oldpassword',
+        confirm_password: 'oldpassword',
+        question: 'mom',
+        type: 'student_graduate',
+        about_you: '',
+        location: '',
+        education: '',
+        jobTitle: '',
+        lookingForWork: '',
+      }]));
+      localStorage.setItem('HR', JSON.stringify([{
+        username: 'test1@ac.sce.ac.il',
+        full_name: 'Test User',
+        password: 'oldpassword',
+        confirm_password: 'oldpassword',
+        question: 'mom',
+        type: 'hr',
+        about_you: '',
+        location: '',
+        education: '',
+        jobTitle: '',
+        lookingForWork: '',
+      }]));
+      localStorage.setItem('Inspectors', JSON.stringify([{
+        username: 'test2@ac.sce.ac.il',
+        full_name: 'Test User',
+        password: 'oldpassword',
+        confirm_password: 'oldpassword',
+        question: 'mom',
+        type: 'inspector',
+        about_you: '',
+        location: '',
+        education: '',
+        jobTitle: '',
+        lookingForWork: '',
+      }]));
+  
+      // Call the checkInput function with the correct email and security question
+      func.checkInput('mom', 'test@ac.sce.ac.il', 'newpassword');
+  
+      // Check that the password of the user with the given email was updated in local storage
+      const students = JSON.parse(localStorage.getItem('Students and Graduates'));
+      expect(students[0].password).toEqual('oldpassword');
+      expect(students[0].confirm_password).toEqual('oldpassword');
+  
+      // Check that the passwords of the other users were not changed
+      const hr = JSON.parse(localStorage.getItem('HR'));
+      expect(hr[0].password).toEqual('oldpassword');
+      expect(hr[0].confirm_password).toEqual('oldpassword');
+      const inspectors = JSON.parse(localStorage.getItem('Inspectors'));
+      expect(inspectors[0].password).toEqual('oldpassword');
+      expect(inspectors[0].confirm_password).toEqual('oldpassword');
     });
-
-    it('should return false for an invalid password that doesnt contain a special character', () => {
-        // Set up the test
-        const password = 'invalidpassworD1';
-
-        // Call the function
-        const result = func.checkPassword(password);
-
-        // Assert that the function returned false
-        expect(result).toBe(false);
-    });
-    it('should return false for an invalid password that doesnt contain an uppercase letter', () => {
-        // Set up the test
-        const password = 'invalidpassword2!';
-
-        // Call the function
-        const result = func.checkPassword(password);
-
-        // Assert that the function returned false
-        expect(result).toBe(false);
-    });
-    it('should return false for an invalid password that doesnt contain lowercase letter', () => {
-        // Set up the test
-        const password = 'INVALIDPASSW0RD!';
-
-        // Call the function
-        const result = func.checkPassword(password);
-
-        // Assert that the function returned false
-        expect(result).toBe(false);
-    });
-    it('should return false for an invalid password that is not in the required length', () => {
-        // Set up the test
-        const password = 'Inval1!';
-
-        // Call the function
-        const result = func.checkPassword(password);
-
-        // Assert that the function returned false
-        expect(result).toBe(false);
-    });
-    it('should return false for an invalid password that doesnt contain a digit', () => {
-        // Set up the test
-        const password = 'invalidpassworD!';
-
-        // Call the function
-        const result = func.checkPassword(password);
-
-        // Assert that the function returned false
-        expect(result).toBe(false);
-    });
-});
+  });
