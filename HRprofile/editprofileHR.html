@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit profile HR</title>
+    <link rel="stylesheet" href="editprofile.css" />
+  </head>
+  <body>
+    <script src="generalScript.js"></script>
+    <script src="script.js"></script>
+    <div class="inner_page_agile">
+      <h3>Edit profile HR</h3>
+      <p>Here you can change your company's information</p>
+    </div>
+
+    <div class="services-breadcrumb_w3layouts">
+      <div class="inner_breadcrumb">
+        <ul class="short_w3ls">
+          <li><a href="index.html" class="home">Home</a><span>|</span></li>
+          <li><a href="http://127.0.0.1:5500/HRprofile/editprofileHR.html" class="home">HR profile</a></li>
+          <li><a href="../JobSearch/Jobsearch.html" class="home">Job List</a></li>
+          <li>My positions</li>
+          
+          <!-- <ul  class= "Logoutbtn"> -->
+          <li>
+            <span>|</span
+            ><a onclick="logout()" href="../login/login_n.html" class="home">Log out</a>
+          </li>
+          <!-- </ul> -->
+        </ul>
+      </div>
+    </div>
+
+    <div class="wrapper">
+      <div class="profile">
+        <div class="content">
+          <h1>Company Information</h1>
+          <form action="">
+             <!-- Email -->
+             <fieldset>
+              <div class="grid-35">
+                <label for="email">Email Address</label>
+              </div>
+              <div class="grid-65">
+                <input placeholder="" type="email" id="email" tabindex="6" />
+              </div>
+            </fieldset>
+            
+            <fieldset>
+              <div class="grid-35">
+                <label for="fname">Full Name of the Company</label>
+              </div>
+              <div class="grid-65">
+                <input placeholder="" type="text" id="fname" tabindex="1" />
+              </div>
+            </fieldset>
+            <!-- Description about User -->
+            <fieldset>
+              <div class="grid-35">
+                <label placeholder="" for="description">About the company</label>
+              </div>
+              <div class="grid-65">
+                <textarea
+                  name=""
+                  id="about_you"
+                  cols="30"
+                  rows="auto"
+                  tabindex="3"
+                ></textarea>
+              </div>
+            </fieldset>
+            <!-- Location -->
+            <fieldset>
+              <div class="grid-35">
+                <label for="location">Location</label>
+              </div>
+              <div class="grid-65">
+                <input placeholder="" type="text" id="location" tabindex="4" />
+              </div>
+            </fieldset>
+           
+            
+           
+           
+            
+            
+            <fieldset>
+              <!-- <input type="button" class="Btn cancel" value="Delete Account" /> -->
+              <a class="butNone" onclick="updateDetails()"><input type="submit" class="Btn" value="Save Changes" /></a></fieldset>
+              <div
+                class="button"
+                onclick="document.body.classList.add('active')"
+              >
+                <span class="button-text">Delete</span>
+                <div class="button-backgrounds"></div>
+              </div>
+
+              <div class="popup">
+                <div class="content2-wrapper">
+                  <h2 class="text">Are you sure to delete your account?</h2>
+                  <a class="butNone" onclick="removeUser()"><button class="btn-7" id="Sure" >Yes</button></a>
+                  <button class="btn-7">No</button>
+                </div>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
