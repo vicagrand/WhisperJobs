@@ -6,8 +6,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Job Search</title>
-    <link rel="stylesheet" href="Jobsearch.css" />
+    <title>User ban</title>
+    <link rel="stylesheet" href="userban.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
     
 </head>
@@ -15,8 +15,8 @@
     
 
     <div class="inner_page_agile">
-      <h3>Job Search</h3>
-      <p>Here you can search your job</p>
+      <h3>User ban</h3>
+      <p>Here you can ban any person</p>
     </div>
     
     <div class="services-breadcrumb_w3layouts">
@@ -32,44 +32,41 @@
         </ul>
       </div>
     </div>
-    <div class="form-group text-center"> 
-						
-      <div class="form-group"> <input type="text" class="form-control" placeholder="Filed/Location/Title" required="required" id="search_btn"> 
-      <button  id="search" onclick="search()" type="submit" class="btn btn-blue btn-block">Search</button></div>
-  
+
+    <div class="list-username">
+        <div class="containeruser">
+            <div class="max-w-sm mx-auto md:max-w-lg">
+                <div class="w-full">
+                    <ul class="px">
+                        <li class="list" >username1@ac.ace.ac.il
+                          <i onclick="deleteTask(this);createTasks()" class="fa fa-trash-alt"></i>
+                        </li>
+                        
+                        <li class="list" >username1@ac.ace.ac.il
+                          <i onclick="deleteTask(this);createTasks()" class="fa fa-trash-alt"></i>
+                        </li>
+                        
+                        <li class="list" >username1@ac.ace.ac.il
+                          <i onclick="deleteTask(this);createTasks()" class="fa fa-trash-alt"></i>
+                        </li>
+                        
+                        <li class="list" >username1@ac.ace.ac.il
+                          <i onclick="deleteTask(this);createTasks()" class="fa fa-trash-alt"></i>
+                        </li>
+                        
+                        <li class="list">username1@ac.ace.ac.il
+                          <i onclick="deleteTask(this);createTasks()" class="fa fa-trash-alt"></i>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
     
-    <div class="app">
-      <h4 class="text-center mb-3">JOB LIST</h4>
-      <h5 class="text-center my-3">Positions</h5>
-
-
-
-<!-- Modal -->
-<form class="modal fade" id="form" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-        
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="submit" id="add" class="btn btn-primary">Add</button>
-      </div>
-    </div>
-  </div>
-</form>
-
-
-      <div id="tasks">
-       
-
-      </div>
-
-    </div>
 
 
 </body>
  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
- <script src=jobsearch.js></script>
+ <script src=userban.js></script>
 </html>
