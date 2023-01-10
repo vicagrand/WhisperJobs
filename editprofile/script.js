@@ -116,11 +116,12 @@ function removeUser() {
 //   let job = current_user.job;
 //   position.innerHTML += `${job}`;
 
-module.exports = {
-  displayProfile: displayProfile,
-  updateDetails: updateDetails
-};
 
 function logout() {
   sessionStorage.removeItem("current_user");
 }
+
+module.exports = {
+  displayProfile: displayProfile,
+  updateDetails: updateDetails
+};

@@ -1,7 +1,7 @@
 //import './setupTests.js';
 //const declareEvents = require('../login/script');
 //const checkLocal = require('../login/script');
-const func = require('../login/Registerscript');
+const func = require('../login/scriptRegister');
 //const { JSDOM } = require('jsdom');
 
 let arr_students;
@@ -14,11 +14,19 @@ beforeEach(() => {
   arr_inspector = [{username: 'inspector'}];
 });
   describe('checkEmail', () => {
-    it('should check that an email address is valid(contains "@ac.sce.ac.il")',()=>{
+    it('should check that an email address is valid(contains "@ac.sce.ac.il") and that the user type is student',()=>{
       let email = 'student1@ac.sce.ac.il';
-      expect(func.checkEmail(email)).toBe(true);
+      let type = 'student_graduate'
+      expect(func.checkEmail(email,type)).toBe(true);
       let email2 = 'student2@gmail.com';
-      expect(func.checkEmail(email2)).toBe(false);
+      let type2 = 'student_graduate'
+      expect(func.checkEmail(email2,type2)).toBe(false);
+      let email3 = 'hr@ac.sce.ac.il';
+      let type3 = 'hr'
+      expect(func.checkEmail(email3,type3)).toBe(false);
+      let email4 = 'inspector@ac.sce.ac.il';
+      let type4 = 'inspector'
+      expect(func.checkEmail(email4,type4)).toBe(false);
     })
   })
 
