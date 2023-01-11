@@ -24,10 +24,7 @@ form.addEventListener("submit", (e) => {
                   <span class="small text-secondary">${x.email}</span>
                  
         
-                  <span class="options">
-                    <i onClick ="editTask(this)" data-bs-toggle="modal" data-bs-target="#form" class="fa fa-edit"></i>
-                    <i onClick ="deleteTask(this);createTasks()" class="fa fa-trash-alt"></i>
-                  </span>
+                
                 </div>
             
             `);
