@@ -1,4 +1,7 @@
+<<<<<<<< HEAD:Admin_add_users/Registetsrcript.js
 //register
+========
+>>>>>>>> origin/yovel:login/Registerscript.js
 let arr_students =
   JSON.parse(localStorage.getItem("Students and Graduates")) || [];
 let arr_hr = JSON.parse(localStorage.getItem("HR")) || [];
@@ -23,8 +26,17 @@ function checkPassword(password) {
   return false;
 }
 
+<<<<<<<< HEAD:Admin_add_users/Registetsrcript.js
 function checkEmail(email) {
-  if (email.includes("@ac.sce.ac.il")) {
+  if (
+    email.includes("@ac.sce.ac.il") ||
+    document.querySelector("#type").value == "hr"
+========
+function checkEmail(email, type) {
+  if (
+    email.includes("@ac.sce.ac.il") && type == "student_graduate"
+>>>>>>>> origin/yovel:login/Registerscript.js
+  ) {
     return true;
   }
   warning = `You are not a student!`;
@@ -45,14 +57,23 @@ function checkLocal() {
 }
 
 function declareEvents() {
+<<<<<<<< HEAD:Admin_add_users/Registetsrcript.js
+========
+  
+>>>>>>>> origin/yovel:login/Registerscript.js
   let add_btn = document.querySelector("#signupbtn");
   add_btn.addEventListener("click", function () {
     event.preventDefault();
     id_warning.innerHTML = "";
-    let email = document.querySelector("#email_username").value;
-    email = email.toLowerCase();
+    let email = document.querySelector("#email_username").value.toLowerCase();
+    //email = email.toLowerCase();
     let password = document.querySelector("#Password").value;
+<<<<<<<< HEAD:Admin_add_users/Registetsrcript.js
     if (checkEmail(email) && checkPassword(password)) {
+========
+    let type = document.querySelector("#type").value;
+    if (checkEmail(email,type) && checkPassword(password)) {
+>>>>>>>> origin/yovel:login/Registerscript.js
       let obj = {
         username: email,
         full_name: document.querySelector("#full_name").value,
@@ -61,8 +82,12 @@ function declareEvents() {
         question: document
           .querySelector("#Safety_question")
           .value.toLowerCase(),
-        type: "student_graduate",
+<<<<<<<< HEAD:Admin_add_users/Registetsrcript.js
+        type: document.querySelector("#type").value,
         //new
+========
+        type: type,
+>>>>>>>> origin/yovel:login/Registerscript.js
         about_you: "",
         location: "",
         education: "",
@@ -76,6 +101,7 @@ function declareEvents() {
         return;
       }
       let flag = 0;
+      //arr_students = Array.from(arr_students)
       arr_students.forEach((element) => {
         if (element["username"] == obj.username) {
           flag = 1;
@@ -98,15 +124,28 @@ function declareEvents() {
         return;
       }
 
-      arr_students.push(obj);
-      localStorage.setItem(
-        "Students and Graduates",
-        JSON.stringify(arr_students)
-      );
+      if (obj.type == "student_graduate") {
+        arr_students.push(obj);
+        localStorage.setItem(
+          "Students and Graduates",
+          JSON.stringify(arr_students)
+        );
+      } else if (obj.type == "hr") {
+        arr_hr.push(obj);
+
+        localStorage.setItem("HR", JSON.stringify(arr_hr));
+      } else if (obj.type == "inspector") {
+        arr_inspector.push(obj);
+        localStorage.setItem("Inspectors", JSON.stringify(arr_inspector));
+      }
 
       window.location.href = "../login/login_n.html";
     }
     id_warning.innerHTML = `${warning}`;
+    // elseif: {
+    //   let warning = "you are not a student!";
+    //   id_warning.innerHTML += `${warning}`;
+    // }
   });
 }
 
@@ -115,4 +154,8 @@ module.exports = {
   declareEvents: declareEvents,
   checkEmail: checkEmail,
   checkPassword: checkPassword,
+<<<<<<<< HEAD:Admin_add_users/Registetsrcript.js
 };
+========
+};
+>>>>>>>> origin/yovel:login/Registerscript.js

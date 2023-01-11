@@ -3,6 +3,7 @@ let arr_students =
 let arr_hr = JSON.parse(localStorage.getItem("HR")) || [];
 let arr_inspector = JSON.parse(localStorage.getItem("Inspectors")) || [];
 let warning = '';
+console.log(module.exports);
 
 function checkPassword(password){
   //Password must be 8 to 15 characters which contain at least one lowercase letter,
@@ -115,6 +116,7 @@ function changepassword(event) {
 };
 
   module.exports = {
+
     signinaction: signinaction,
     changepassword: changepassword,
     checkPassword: checkPassword,
