@@ -11,29 +11,26 @@ displayProfile = function () {
   let location = user.location;
   document.getElementById("location").placeholder = `${location}`;
   let username = user.username;
-  document.getElementById("email").innerHTML += `${username}`;
+  document.getElementById("email").placeholder = `${username}`;
   let education = user.education;
   document.getElementById("qualification").placeholder = `${education}`;
-  let jobTitle = user.jobTitle;
-  document.getElementById("position").placeholder = `${jobTitle}`;
 };
+
 function updateDetails() {
-  if (document.querySelector("#fname").value != "")
+  if(document.querySelector("#fname").value != "")
     user.full_name = document.querySelector("#fname").value;
-  if (document.querySelector("#about_you").value != "")
+  if(document.querySelector("#about_you").value != "")
     user.about_you = document.querySelector("#about_you").value;
   if (document.querySelector("#location").value != "")
     user.location = document.querySelector("#location").value;
-  if (document.querySelector("#qualification").value != "")
+  if(document.querySelector("#qualification").value != "")
     user.education = document.querySelector("#qualification").value;
-  if (document.querySelector("#position").value != "")
-    user.jobTitle = document.querySelector("#position").value;
-  if (document.querySelector("#forHire").value != "")
+  if(document.querySelector("#forHire").value != "")
     user.lookingForWork = document.querySelector("#forHire").value;
-  if (user.type == "student_graduate") {
+  if(user.type == "student_graduate") {
     let arr_students =
       JSON.parse(localStorage.getItem("Students and Graduates")) || [];
-    for (let key in arr_students) {
+    for(let key in arr_students) {
       if (arr_students[key].username == user.username) {
         arr_students[key] = user;
         localStorage.setItem(
@@ -119,3 +116,34 @@ function removeUser() {
 function logout() {
   sessionStorage.removeItem("current_user");
 }
+
+window.addEventListener('load', function() {
+  document.querySelector('input[type="file"]').addEventListener('change', function() {
+      if (this.files && this.files[0]) {
+          var img = document.querySelector('img');
+          img.onload = () => {
+              URL.revokeObjectURL(img.src);  // no longer needed, free memory
+          }
+
+          img.src = URL.createObjectURL(this.files[0]); // set src to blob url
+      }
+  });
+});
+
+const UPLOAD_BUTTON = document.getElementById("upload-button");
+const FILE_INPUT = document.querySelector("input[type=file]");
+const AVATAR = document.getElementById("avatar");
+
+UPLOAD_BUTTON.addEventListener("click", () => FILE_INPUT.click());
+
+FILE_INPUT.addEventListener("change", event => {
+  const file = event.target.files[0];
+
+  const reader = new FileReader();
+  reader.readAsDataURL(file);
+
+  reader.onloadend = () => {
+    AVATAR.setAttribute("aria-label", file.name);
+    AVATAR.style.background = `url(${reader.result}) center center/cover`;
+  };
+});

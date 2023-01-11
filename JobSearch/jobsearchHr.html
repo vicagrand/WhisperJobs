@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Positions</title>
-    <link rel="stylesheet" href="Myposition.css" />
+    <title>Job Search</title>
+    <link rel="stylesheet" href="Jobsearch.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
     
 </head>
@@ -14,17 +15,17 @@
     
 
     <div class="inner_page_agile">
-      <h3>My Positions</h3>
-      <p>Here you can See/Add Your Positions</p>
+      <h3>Job Search</h3>
+      <p>Here you can search your job</p>
     </div>
     
     <div class="services-breadcrumb_w3layouts">
       <div class="inner_breadcrumb">
         <ul class="short_w3ls" id="buttons">
-          <li><a href="http://127.0.0.1:5500/MenuAdmin/menuadmin.html">Home</a><span>|</span></li>
-           <li><a href="http://127.0.0.1:5500/edit%20profile/editprofile.html">My profile</a></li>
-           <li><a href="../JobSearch/Jobsearch.html">Job search</a></li>
-           <li>My positions</li>
+          <li><a href="../MenuHR/menuhr.html">Home</a><span>|</span></li>
+           <li><a href="../HRprofile/editprofileHR.html">My profile</a></li>
+           <li><a href="../Myposition/Myposition.html"> My positions</a></li>
+          <li>Job search</li>
           <li><a href="http://127.0.0.1:5500/PhoneBook/phonebook.html">Management</a></li>
           <!-- <ul  class= "Logoutbtn"> -->
             <li><span>|</span><a href="http://127.0.0.1:5500/login/login_n.html" class="home">Log out</a></li>
@@ -32,14 +33,15 @@
         </ul>
       </div>
     </div>
-      
+    <div class="form-group text-center"> 
+						
+      <div class="form-group"> <input type="text" class="form-control" placeholder="Filed/Location/Title" required="required" id="search_btn"> 
+      <button  id="search" onclick="search()" type="submit" class="btn btn-blue btn-block">Search</button></div>
+  
+    
     <div class="app">
-      <h4 class="text-center mb-3">Positions</h4>
-      <div id="addnew" data-bs-toggle="modal" data-bs-target="#form">
-        <span>add new position</span>
-        <i class="fa fa-plus"></i>
-      </div>
-     
+      <h4 class="text-center mb-3">JOB LIST</h4>
+      <h5 class="text-center my-3">Positions</h5>
 
 
 
@@ -48,36 +50,12 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Add new Position</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body">
-        <p>title</p>
-        <input class="form-control" type="text" name="" id="textInput">
-        <div id="msg"></div>
-        <br>
-        <p>Your Email</p>
-        <input class="form-control" type="email" name="" id="EmailInput">
-        <br>
-        <p>Company Email</p>
-        <input class="form-control" type="emailC" name="" id="EmailCInput">
-        <br>
-        <p>City</p>
-        <input class="form-control" type="city" name="" id="CityInput">
-        <br>
-        <p>Filed</p>
-        <input class="form-control" type="filed" name="" id="FiledInput">
-        <br>
-        <p>Date of publish</p>
-        <input class="form-control" type="date" name="" id="dateInput">
-        <br>
-        <p>Description </p>
-        <textarea class="form-control" name="" id="textarea" cols="30" rows="5"></textarea>
-        <br>
-      </div>
+        
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="submit" id="add" class="btn btn-primary">Save</button>
+        <button type="submit" id="add" class="btn btn-primary">Add</button>
       </div>
     </div>
   </div>
@@ -94,5 +72,5 @@
 
 </body>
  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
- <script src=Myposition.js></script>
+ <script src=jobsearch.js></script>
 </html>
