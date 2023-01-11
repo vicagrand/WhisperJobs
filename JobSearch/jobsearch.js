@@ -12,6 +12,7 @@ form.addEventListener("submit", (e) => {
     createTasks();
 }); 
     let createTasks = () =>{
+     
             tasks.innerHTML = "";
             data.map((x,y)=>{
             return (tasks.innerHTML += `
@@ -22,12 +23,6 @@ form.addEventListener("submit", (e) => {
                   <span class="small text-secondary">${x.filed}</span>
                   <p>${x.description}</p>
                   <span class="small text-secondary">${x.email}</span>
-                 
-        
-                  <span class="options">
-                    <i onClick ="editTask(this)" data-bs-toggle="modal" data-bs-target="#form" class="fa fa-edit"></i>
-                    <i onClick ="deleteTask(this);createTasks()" class="fa fa-trash-alt"></i>
-                  </span>
                 </div>
             
             `);
@@ -46,26 +41,24 @@ form.addEventListener("submit", (e) => {
 function search(){ 
     let search = search_btn.value;
     tasks.innerHTML = "";
-    data.forEach((element) => {
-         if(element["city"] == search ){
-            data.map((x,y)=>{
-                return (tasks.innerHTML += `
-                 <div id=${y}>
-                 <span class="small text-secondary">${x.date}</span>
-                 <span class="fw-bold">${x.text}</span>
-                 <span class="small text-secondary">${x.city}</span>
-                 <span class="small text-secondary">${x.filed}</span>
-                 <p>${x.description}</p>
-                 <span class="small text-secondary">${x.email}</span>
-                </div>
-               `);
-                
-            })
-                
-                }
-        })
-         
-        };
+    data.map((x,y)=>{
+    if(x.city==search||x.filed==search||x.text==search ){
+        return (tasks.innerHTML += `
+        <div id=${y}>
+            <span class="small text-secondary">${x.email}</span>
+            <span class="small text-secondary">${x.date}</span>
+            <span class="fw-bold">${x.text}</span>
+            <span class="small text-secondary">${x.city}</span>
+            <span class="small text-secondary">${x.filed}</span>
+            <p>${x.description}</p>
+            <span class="small text-secondary">${x.emailC}</span>
+            </div>
+        
+        `); 
+    }
+  
+})
+};
             
    
         
