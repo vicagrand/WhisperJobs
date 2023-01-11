@@ -33,64 +33,83 @@ beforeEach(() => {
   flag = 0;
 });
 
+function signIn(email,pass){
+  let result = false
+  arr_students.forEach((element) => {
+    if (element["username"] == email && element["password"] == pass) {
+      result = true
+    }
+  });
+  arr_inspector.forEach((element) => {
+    if (element["username"] == email && element["password"] == pass) {
+      result = true
+  }});
+  arr_hr.forEach((element) => {
+    if (element["username"] == email && element["password"] == pass) {
+      result = true
+    }
+  });
+  if (result == false) {
+    id_warning.innerHTML += `${'Wrong credentials'}`;
+  }
+  return result
+}
+
+function changePassword(question,email,newpassword){
+  arr_students.forEach((element) => {
+    if (element["username"] == email) {
+      if(element["question"] == question){
+        element["password"] = newpassword;
+        element["confirm_password"] = newpassword;
+      }
+    }
+  });
+  arr_inspector.forEach((element) => {
+    if (element["username"] == email) {
+      if(element["question"] == question){
+        element["password"] = newpassword;
+        element["confirm_password"] = newpassword;
+      }
+    }
+  });
+  arr_hr.forEach((element) => {
+    if (element["username"] == email) {
+      if(element["question"] == question){
+      element["password"] = newpassword;
+      element["confirm_password"] = newpassword;
+      }
+    }
+  });
+}
+
 it('Check that the user is matching an inspector in the database', () => {
   let loginEmail = 'inspector@ac.sce.ac.il';
   loginEmail = loginEmail.toLowerCase();
   const loginPass = '12345Aa!'; 
-  arr_inspector.forEach((element) => {
-    if (element["username"] == loginEmail && element["password"] == loginPass) {
-      flag = 1;
-    }
-  });
-
-  expect(flag).toBe(1);
+  expect(signIn(loginEmail,loginPass)).toBe(true);
 });
 
-it('Check that the user is not matching a student or hr in the database', () => {
-  let loginEmail = 'inspector@ac.sce.ac.il';
+it('Check that the user is not matching any user in the database', () => {
+  let loginEmail = 'wrong@ac.sce.ac.il';
   loginEmail = loginEmail.toLowerCase();
-  const loginPass = '12345Aa!'; 
-  arr_students.forEach((element) => {
-    if (element["username"] == loginEmail && element["password"] == loginPass) {
-      flag = 1;
-    }
-  });
-  arr_hr.forEach((element) => {
-    if (element["username"] == loginEmail && element["password"] == loginPass) {
-      flag = 1;
-    }
-  });
-  expect(flag).toBe(0);
+  const loginPass = 'wrongpass'; 
+  expect(signIn(loginEmail,loginPass)).toBe(false);
 });
 
 it('Should show a message if the user doesnt match any user in the database', () => {
   let loginEmail = 'wrong@ac.sce.ac.il';
   loginEmail = loginEmail.toLowerCase();
   const loginPass = 'wrongpass'; 
-  arr_students.forEach((element) => {
-    if (element["username"] == loginEmail && element["password"] == loginPass) {
-      flag = 1;
-    }
-  });
-  arr_inspector.forEach((element) => {
-    if (element["username"] == loginEmail && element["password"] == loginPass) {
-      flag = 1;
-    }
-  });
-  arr_hr.forEach((element) => {
-    if (element["username"] == loginEmail && element["password"] == loginPass) {
-      flag = 1;
-    }
-  });
-  if (flag == 0) {
-    id_warning.innerHTML += `${'Wrong credentials'}`;
-  }
+  signIn(loginEmail,loginPass)
 
   expect(id_warning.innerHTML).toBe('Wrong credentials');
 });
 
-it('should update the password of the user with the given email and security question', () => {
-  //Set up the accounts storage
+
+describe('changePassword',()=>{
+  
+  it('shouldnt update the password of the user with wrong question', () => {
+    //Set up the accounts storage
   arr_students = [{username: 'student@ac.sce.ac.il',
   password: 'oldpassword',
   confirm_password: 'oldpassword',
@@ -106,27 +125,32 @@ it('should update the password of the user with the given email and security que
   confirm_password: 'oldpassword',
   question: document.querySelector("#Safety_question").value.toLowerCase(),}]
 
-  let loginEmail = 'inspector@ac.sce.ac.il';
-  loginEmail = loginEmail.toLowerCase();
-  let question = 'mom';
-  // Call the checkInput function with the correct email and security question
+    let loginEmail = 'inspector@ac.sce.ac.il';
+    let question = 'dad';
+    let newpassword = 'newpassword'
+    // Call the changePassword function with the incorrect email and security question
+    changePassword(question,loginEmail,newpassword)
   
-  arr_inspector.forEach((element) => {
-    if (element["username"] == loginEmail) {//emails are unique so if the email is equal just check for question
-      if(element["question"] == question){//if question is equal update the new password
-        element["password"] = 'newpassword';//update password
-        element["confirm_password"] = 'newpassword';
-      }
-    }
-  });
-  //Check that the password has been changed
-  expect(arr_inspector[0].password).toEqual('newpassword');
-  expect(arr_inspector[0].confirm_password).toEqual('newpassword');
+   //Check that the password hasn't been changed
+    expect(arr_inspector[0].password).toEqual('oldpassword');
+    expect(arr_inspector[0].confirm_password).toEqual('oldpassword');
+  })
 
-  // Check that the passwords of the other users were not changed
-  expect(arr_hr[0].password).toEqual('oldpassword');
-  expect(arr_hr[0].confirm_password).toEqual('oldpassword');
-  expect(arr_students[0].password).toEqual('oldpassword');
-  expect(arr_students[0].confirm_password).toEqual('oldpassword');
- 
+  it('should update the password of the user with the given email and security question', () => {
+    let loginEmail = 'inspector@ac.sce.ac.il';
+    let question = 'mom';
+    let newpassword = 'newpassword'
+    // Call the changePassword function with the correct email and security question
+    changePassword(question,loginEmail,newpassword)
+
+    //Check that the password has been changed
+    expect(arr_inspector[0].password).toEqual('newpassword');
+    expect(arr_inspector[0].confirm_password).toEqual('newpassword');
+
+    // Check that the passwords of the other users were not changed
+    expect(arr_hr[0].password).toEqual('oldpassword');
+    expect(arr_hr[0].confirm_password).toEqual('oldpassword');
+    expect(arr_students[0].password).toEqual('oldpassword');
+    expect(arr_students[0].confirm_password).toEqual('oldpassword');
+  })
 });
