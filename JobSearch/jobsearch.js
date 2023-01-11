@@ -40,7 +40,7 @@ form.addEventListener("submit", (e) => {
 
 function search(){ 
     let search = search_btn.value;
-    tasks.innerHTML = "";
+    tasks.innerHTML = " ";
     data.map((x,y)=>{
     if(x.city==search||x.filed==search||x.text==search ){
         return (tasks.innerHTML += `
