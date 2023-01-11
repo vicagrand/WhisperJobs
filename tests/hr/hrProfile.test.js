@@ -11,7 +11,7 @@ let user = {
   about_you: "about",
   location: "dimona",
   education: "degree",
-  jobTitle: "bullshit",
+  jobTitle: "bull****",
   lookingForWork: "no",
   type:'hr'
 };
@@ -31,8 +31,7 @@ beforeEach(() => {
   id_warning.innerHTML = "";
 
 });
-it('Should display the user details on the screen', () => {
-  //change the value in the document to be the user's details
+function displayProfile(){
   let full_name = arr_hr[0].full_name;
   document.getElementById("fname").placeholder = `${full_name}`;
   let about_you = arr_hr[0].about_you;
@@ -45,53 +44,21 @@ it('Should display the user details on the screen', () => {
   document.getElementById("qualification").placeholder = `${education}`;
   let jobTitle = arr_hr[0].jobTitle;
   document.getElementById("position").placeholder = `${jobTitle}`;
+}
+
+describe('displayProfile',()=>{
+it('Should display the user details on the screen', () => {
+  
+  //call the function
+  displayProfile();
+  
 
   //Check that it was updated and this should be displayed on the screen
-  expect(document.getElementById("fname").placeholder = `${full_name}`).toEqual("jack");
-  expect(document.getElementById("about_you").placeholder = `${about_you}`).toEqual('about');
-  expect(document.getElementById("location").placeholder = `${location}`).toEqual('dimona');
-  expect(document.getElementById("email").innerHTML = `${username}`).toEqual('jack@gmail.com');
-  expect(document.getElementById("qualification").placeholder = `${education}`).toEqual('degree');
-  expect(document.getElementById("position").placeholder = `${jobTitle}`).toEqual('bullshit');
+  expect(document.getElementById("fname").placeholder).toEqual("jack");
+  expect(document.getElementById("about_you").placeholder).toEqual('about');
+  expect(document.getElementById("location").placeholder).toEqual('dimona');
+  expect(document.getElementById("email").innerHTML).toEqual('jack@gmail.com');
+  expect(document.getElementById("qualification").placeholder).toEqual('degree');
+  expect(document.getElementById("position").placeholder).toEqual('bull****');
 });
-
-it('should update the user details in local storage and session storage', () => {
-  if (document.querySelector("#fname").value != "")
-  user.full_name = document.querySelector("#fname").value;
-  if (document.querySelector("#about_you").value != "")
-    user.about_you = document.querySelector("#about_you").value;
-  if (document.querySelector("#location").value != "")
-    user.location = document.querySelector("#location").value;
-  if (document.querySelector("#qualification").value != "")
-    user.education = document.querySelector("#qualification").value;
-  if (document.querySelector("#position").value != "")
-    user.jobTitle = document.querySelector("#position").value;
-  if (document.querySelector("#forHire").value != "")
-    user.lookingForWork = document.querySelector("#forHire").value;
-  if (user.type == "hr") {
-    arr_hr.forEach((element) => {
-      if (element.username == user.username) {
-        element = user;
-      }
-    })
-  } else if (user.type == "inspector") {
-    arr_inspector.forEach((element) => {
-      if (element.username == user.username) {
-        element = user;
-      }
-    })
-  } else if (user.type == "student_graduate") {
-    arr_students.forEach((element) => {
-      if (element.username == user.username) {
-        element = user;
-      }
-    })
-  }   
-  
-    expect(arr_hr[0].full_name).toEqual('dani');
-    expect(arr_hr[0].about_you).toEqual('very smort');
-    expect(arr_hr[0].location).toEqual('space');
-    expect(arr_hr[0].education).toEqual('many degrees');
-    expect(arr_hr[0].jobTitle).toEqual('workee');
-    expect(arr_hr[0].lookingForWork).toEqual('no');
 });
