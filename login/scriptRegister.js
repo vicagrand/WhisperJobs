@@ -1,4 +1,3 @@
-//register
 let arr_students =
   JSON.parse(localStorage.getItem("Students and Graduates")) || [];
 let arr_hr = JSON.parse(localStorage.getItem("HR")) || [];
@@ -23,10 +22,9 @@ function checkPassword(password) {
   return false;
 }
 
-function checkEmail(email) {
+function checkEmail(email, type) {
   if (
-    email.includes("@ac.sce.ac.il") ||
-    document.querySelector("#type").value == "hr"
+    email.includes("@ac.sce.ac.il") && type == "student_graduate"
   ) {
     return true;
   }
@@ -48,14 +46,16 @@ function checkLocal() {
 }
 
 function declareEvents() {
+  
   let add_btn = document.querySelector("#signupbtn");
   add_btn.addEventListener("click", function () {
     event.preventDefault();
     id_warning.innerHTML = "";
-    let email = document.querySelector("#email_username").value;
-    email = email.toLowerCase();
+    let email = document.querySelector("#email_username").value.toLowerCase();
+    //email = email.toLowerCase();
     let password = document.querySelector("#Password").value;
-    if (checkEmail(email) && checkPassword(password)) {
+    let type = document.querySelector("#type").value;
+    if (checkEmail(email,type) && checkPassword(password)) {
       let obj = {
         username: email,
         full_name: document.querySelector("#full_name").value,
@@ -64,11 +64,9 @@ function declareEvents() {
         question: document
           .querySelector("#Safety_question")
           .value.toLowerCase(),
-        type: document.querySelector("#type").value,
-        //new
+        type: type,
         about_you: "",
         location: "",
-
         education: "",
         jobTitle: "",
         lookingForWork: "",
@@ -80,6 +78,7 @@ function declareEvents() {
         return;
       }
       let flag = 0;
+      //arr_students = Array.from(arr_students)
       arr_students.forEach((element) => {
         if (element["username"] == obj.username) {
           flag = 1;

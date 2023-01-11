@@ -9,7 +9,7 @@
   </head>
   <body>
     <script src="../generalScript.js"></script>
-    <script src="script.js"></script>
+    <script src="editprofilescript.js"></script>
     <div class="inner_page_agile">
       <h3>Edit profile</h3>
       <p>Here you can change your information</p>
@@ -18,10 +18,10 @@
     <div class="services-breadcrumb_w3layouts">
       <div class="inner_breadcrumb">
         <ul class="short_w3ls">
-          <li><a href="index.html" class="home">Home</a><span>|</span></li>
-          <li>My profile</li>
-          <li>Job search</li>
-          <li>My positions</li>
+          <li><a href="../MenuStudent/menustudent.html" class="home">Home</a><span>|</span></li>
+          <li></a>My profile</li>
+          <li><a href="../JobSearch/Jobsearch.html">Job search</a></li>
+          <li><a href="../Myposition/Myposition.html">My positions</a></li>
           <!-- <ul  class= "Logoutbtn"> -->
           <li>
             <span>|</span
@@ -43,8 +43,9 @@
                 <label for="avatar">Your Photo</label>
               </div>
               <div class="grid-65">
-                <span class="photo" title="Upload your Avatar!"></span>
-                <input type="file" class="btn" />
+              </br><img id="myImg" src="#"  height=70 width=70>
+                <input type="file" class="btn" name="input" id="input"/>
+           
               </div>
             </fieldset>
             <fieldset>
@@ -107,7 +108,7 @@
               </div>
               <div class="grid-65">
                 <select name="qualification" id="qualification" tabindex="8">
-                  <option selected="selected" value="--------------" disabled>
+                  <option selected="selected" value="--------------" placeholder="">
                     --------------
                   </option>
                   <option value="primary_school">
