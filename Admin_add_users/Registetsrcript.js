@@ -24,7 +24,10 @@ function checkPassword(password) {
 }
 
 function checkEmail(email) {
-  if (email.includes("@ac.sce.ac.il")) {
+  if (
+    email.includes("@ac.sce.ac.il") ||
+    document.querySelector("#type").value == "hr"
+  ) {
     return true;
   }
   warning = `You are not a student!`;
@@ -61,10 +64,11 @@ function declareEvents() {
         question: document
           .querySelector("#Safety_question")
           .value.toLowerCase(),
-        type: "student_graduate",
+        type: document.querySelector("#type").value,
         //new
         about_you: "",
         location: "",
+
         education: "",
         jobTitle: "",
         lookingForWork: "",
@@ -98,15 +102,28 @@ function declareEvents() {
         return;
       }
 
-      arr_students.push(obj);
-      localStorage.setItem(
-        "Students and Graduates",
-        JSON.stringify(arr_students)
-      );
+      if (obj.type == "student_graduate") {
+        arr_students.push(obj);
+        localStorage.setItem(
+          "Students and Graduates",
+          JSON.stringify(arr_students)
+        );
+      } else if (obj.type == "hr") {
+        arr_hr.push(obj);
+
+        localStorage.setItem("HR", JSON.stringify(arr_hr));
+      } else if (obj.type == "inspector") {
+        arr_inspector.push(obj);
+        localStorage.setItem("Inspectors", JSON.stringify(arr_inspector));
+      }
 
       window.location.href = "../login/login_n.html";
     }
     id_warning.innerHTML = `${warning}`;
+    // elseif: {
+    //   let warning = "you are not a student!";
+    //   id_warning.innerHTML += `${warning}`;
+    // }
   });
 }
 
