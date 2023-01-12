@@ -36,6 +36,7 @@ let formValidation = () => {
 };
 
 let data = [];
+let HR=[];
 
 
 
@@ -51,9 +52,14 @@ let acceptData = () => {
     });
 
     localStorage.setItem("data",JSON.stringify(data));
-
+    HR.push({
+        emailC:emailCInput.value,
+        password:generateP(),
+    });
+    localStorage.setItem("HR",JSON.stringify(HR));
 
     console.log(data);
+    console.log(HR);
 
     createTasks();
 };
@@ -122,6 +128,38 @@ let resetForm = () =>{
 
 (()=>{
     data = JSON.parse(localStorage.getItem("data")) || [];
+    HR=JSON.parse(localStorage.getItem("HR")) || [];
     createTasks();
     console.log(data);
 })();
+
+function generateP() {
+    var pass = '';
+    var str = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' + 
+            'abcdefghijklmnopqrstuvwxyz0123456789@#$';
+      
+    for (let i = 1; i <= 8; i++) {
+        var char = Math.floor(Math.random()
+                    * str.length + 1);
+          
+        pass += str.charAt(char)
+    }
+      
+    return pass;
+}
+
+
+function sendEmail() {
+    Email.send({
+      Host: "smtp.gmail.com",
+      Username: "jobwhispper17@gmail.com",
+      Password: "6436974+J",
+      To:document.getElementById("EmailCInput").value,
+      From: "jobwhispper17@gmail.com",
+      Subject: "Sending Email using javascript",
+      Body: "Well that was easy!!",
+    })
+      .then(function (message) {
+        alert("mail sent successfully")
+      });
+  }
