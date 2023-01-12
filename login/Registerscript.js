@@ -1,7 +1,4 @@
-<<<<<<<< HEAD:Admin_add_users/Registetsrcript.js
-//register
-========
->>>>>>>> origin/yovel:login/Registerscript.js
+
 let arr_students =
   JSON.parse(localStorage.getItem("Students and Graduates")) || [];
 let arr_hr = JSON.parse(localStorage.getItem("HR")) || [];
