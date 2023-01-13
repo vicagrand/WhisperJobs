@@ -36,21 +36,39 @@ beforeEach(() => {
 function signIn(email,pass){
   let result = false
   arr_students.forEach((element) => {
-    if (element["username"] == email && element["password"] == pass) {
-      result = true
+    if (element["username"] == email){
+      if(element.type == 'blocked'){
+        id_warning.innerHTML = 'You have been blocked'
+        result = true;
+      }
+      if(element["password"] == pass){
+        result = true;
+      }
     }
   });
   arr_inspector.forEach((element) => {
-    if (element["username"] == email && element["password"] == pass) {
-      result = true
+    if (element["username"] == email){
+      if(element.type == 'blocked'){
+        id_warning.innerHTML = 'You have been blocked'
+        result = true;
+      }
+      if(element["password"] == pass){
+        result = true;
+      }
   }});
   arr_hr.forEach((element) => {
-    if (element["username"] == email && element["password"] == pass) {
-      result = true
-    }
+    if (element["username"] == email){
+      if(element.type == 'blocked'){
+        id_warning.innerHTML = 'You have been blocked'
+        result = true;
+      }
+      if(element["password"] == pass){
+        result = true;
+      }
+  }
   });
   if (result == false) {
-    id_warning.innerHTML += `${'Wrong credentials'}`;
+    id_warning.innerHTML = `${'Wrong credentials'}`;
   }
   return result
 }
@@ -81,7 +99,7 @@ function changePassword(question,email,newpassword){
     }
   });
 }
-
+describe('signIn', () => {
 it('Check that the user is matching an inspector in the database', () => {
   let loginEmail = 'inspector@ac.sce.ac.il';
   loginEmail = loginEmail.toLowerCase();
@@ -104,8 +122,17 @@ it('Should show a message if the user doesnt match any user in the database', ()
 
   expect(id_warning.innerHTML).toBe('Wrong credentials');
 });
+it('Should show a message if the user is blocked', () => {
+  //set up inspector to be blocked
+  arr_inspector[0].type = 'blocked'
+  let loginEmail = "inspector@ac.sce.ac.il";
+  loginEmail = loginEmail.toLowerCase();
+  const loginPass = "12345Aa!"; 
 
-
+  signIn(loginEmail,loginPass)
+  expect(id_warning.innerHTML).toBe('You have been blocked');
+});
+});
 describe('changePassword',()=>{
   
   it('shouldnt update the password of the user with wrong question', () => {

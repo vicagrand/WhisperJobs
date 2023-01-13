@@ -24,7 +24,8 @@ function checkPassword(password) {
 }
 
 function checkEmail(email) {
-  if (email.includes("@ac.sce.ac.il")) {
+  if (email.includes("@ac.sce.ac.il") ||
+  type == "hr") {
     return true;
   }
   warning = `You are not a student!`;
@@ -52,7 +53,8 @@ function declareEvents() {
     let email = document.querySelector("#email_username").value;
     email = email.toLowerCase();
     let password = document.querySelector("#Password").value;
-    if (checkEmail(email) && checkPassword(password)) {
+    type = document.querySelector("#type").value;
+    if (checkEmail(email,type) && checkPassword(password)) {
       let obj = {
         username: email,
         full_name: document.querySelector("#full_name").value,
@@ -61,7 +63,7 @@ function declareEvents() {
         question: document
           .querySelector("#Safety_question")
           .value.toLowerCase(),
-        type: "student_graduate",
+        type: type,
         //new
         about_you: "",
         location: "",
@@ -97,12 +99,23 @@ function declareEvents() {
         id_warning.innerHTML += `${warning}`;
         return;
       }
-
-      arr_students.push(obj);
+      if(obj.type == 'hr'){
+        arr_hr.push(obj);
+        localStorage.setItem("HR",
+          JSON.stringify(arr_hr));
+      }
+      else if(obj.type == 'inspector'){
+      arr_inspector.push(obj)
+      localStorage.setItem(
+        "Inspectors",
+        JSON.stringify(arr_inspector));
+      }
+      else{arr_students.push(obj);
       localStorage.setItem(
         "Students and Graduates",
         JSON.stringify(arr_students)
       );
+      }
 
       window.location.href = "../login/login_n.html";
     }
