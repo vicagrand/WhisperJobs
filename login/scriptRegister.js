@@ -100,22 +100,8 @@ function declareEvents() {
         id_warning.innerHTML += `${warning}`;
         return;
       }
-
-      if (obj.type == "student_graduate") {
-        arr_students.push(obj);
-        localStorage.setItem(
-          "Students and Graduates",
-          JSON.stringify(arr_students)
-        );
-      } else if (obj.type == "hr") {
-        arr_hr.push(obj);
-
-        localStorage.setItem("HR", JSON.stringify(arr_hr));
-      } else if (obj.type == "inspector") {
-        arr_inspector.push(obj);
-        localStorage.setItem("Inspectors", JSON.stringify(arr_inspector));
-      }
-
+      arr_students.push(obj);
+      localStorage.setItem("Students and Graduates",JSON.stringify(arr_students));
       window.location.href = "../login/login_n.html";
     }
     id_warning.innerHTML = `${warning}`;
