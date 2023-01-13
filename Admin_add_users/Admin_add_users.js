@@ -1,7 +1,4 @@
-<<<<<<<< HEAD:Admin_add_users/Registetsrcript.js
 //register
-========
->>>>>>>> origin/yovel:login/Registerscript.js
 let arr_students =
   JSON.parse(localStorage.getItem("Students and Graduates")) || [];
 let arr_hr = JSON.parse(localStorage.getItem("HR")) || [];
@@ -26,16 +23,10 @@ function checkPassword(password) {
   return false;
 }
 
-<<<<<<<< HEAD:Admin_add_users/Registetsrcript.js
 function checkEmail(email) {
   if (
     email.includes("@ac.sce.ac.il") ||
     document.querySelector("#type").value == "hr"
-========
-function checkEmail(email, type) {
-  if (
-    email.includes("@ac.sce.ac.il") && type == "student_graduate"
->>>>>>>> origin/yovel:login/Registerscript.js
   ) {
     return true;
   }
@@ -57,23 +48,14 @@ function checkLocal() {
 }
 
 function declareEvents() {
-<<<<<<<< HEAD:Admin_add_users/Registetsrcript.js
-========
-  
->>>>>>>> origin/yovel:login/Registerscript.js
   let add_btn = document.querySelector("#signupbtn");
   add_btn.addEventListener("click", function () {
     event.preventDefault();
     id_warning.innerHTML = "";
-    let email = document.querySelector("#email_username").value.toLowerCase();
-    //email = email.toLowerCase();
+    let email = document.querySelector("#email_username").value;
+    email = email.toLowerCase();
     let password = document.querySelector("#Password").value;
-<<<<<<<< HEAD:Admin_add_users/Registetsrcript.js
     if (checkEmail(email) && checkPassword(password)) {
-========
-    let type = document.querySelector("#type").value;
-    if (checkEmail(email,type) && checkPassword(password)) {
->>>>>>>> origin/yovel:login/Registerscript.js
       let obj = {
         username: email,
         full_name: document.querySelector("#full_name").value,
@@ -82,14 +64,11 @@ function declareEvents() {
         question: document
           .querySelector("#Safety_question")
           .value.toLowerCase(),
-<<<<<<<< HEAD:Admin_add_users/Registetsrcript.js
         type: document.querySelector("#type").value,
         //new
-========
-        type: type,
->>>>>>>> origin/yovel:login/Registerscript.js
         about_you: "",
         location: "",
+
         education: "",
         jobTitle: "",
         lookingForWork: "",
@@ -101,7 +80,6 @@ function declareEvents() {
         return;
       }
       let flag = 0;
-      //arr_students = Array.from(arr_students)
       arr_students.forEach((element) => {
         if (element["username"] == obj.username) {
           flag = 1;
@@ -154,8 +132,4 @@ module.exports = {
   declareEvents: declareEvents,
   checkEmail: checkEmail,
   checkPassword: checkPassword,
-<<<<<<<< HEAD:Admin_add_users/Registetsrcript.js
 };
-========
-};
->>>>>>>> origin/yovel:login/Registerscript.js
