@@ -198,8 +198,7 @@ describe("search",()=>{
         search_btn.value = 'wrong input';
         //call the function
         search();
-        
-        
+        //expect to be empty
         expect(tasks.innerHTML).toEqual(" ")
     })
 });

@@ -13,6 +13,8 @@ document.body.innerHTML = `
 <label class="warning" id="id_warning"></label>
 `;
 
+global.window = Object.create(window);
+
 // Set up the User for testing
 let user = {
   username: document.querySelector("#email_username").value.toLowerCase(),
@@ -42,6 +44,12 @@ function signIn(email,pass){
       }
       if(element["password"] == pass){
         result = true;
+        url = "../MenuStudent/menustudent.html"
+        Object.defineProperty(window, 'location', {
+          value: {
+            href: url
+          }
+        });
       }
     }
   });
@@ -53,6 +61,12 @@ function signIn(email,pass){
       }
       if(element["password"] == pass){
         result = true;
+        url = "../MenuAdmin/menuadmin.html"
+        Object.defineProperty(window, 'location', {
+          value: {
+            href: url
+          }
+        });
       }
   }});
   arr_hr.forEach((element) => {
@@ -63,6 +77,12 @@ function signIn(email,pass){
       }
       if(element["password"] == pass){
         result = true;
+        url = "../MenuHR/menuhr.html"
+        Object.defineProperty(window, 'location', {
+          value: {
+            href: url
+          }
+        });
       }
   }
   });
@@ -137,6 +157,14 @@ it('Should show a message if the user is blocked', () => {
   signIn(loginEmail,loginPass)
   expect(id_warning.innerHTML).toBe('You have been blocked');
 });
+it('Should redirect to the correct page after successful login',()=>{
+  let loginEmail = "hr@gmail.com";
+  loginEmail = loginEmail.toLowerCase();
+  const loginPass = "12345Aa!"; 
+
+  signIn(loginEmail,loginPass)
+  expect(window.location.href).toEqual("../MenuHR/menuhr.html");
+})
 });
 describe('changePassword',()=>{
 it('should update the password of the user with the given email and security question', () => {
