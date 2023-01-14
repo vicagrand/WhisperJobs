@@ -39,7 +39,6 @@ let createTasks = () => {
 
 
 
-
 function search() {
     let search = search_btn.value;
     tasks.innerHTML = "";
