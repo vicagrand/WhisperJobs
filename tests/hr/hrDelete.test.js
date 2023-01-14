@@ -66,13 +66,13 @@ function removeUser(user) {
     }
   };
 
-it("Should delete an inspector account",()=>{
+it("Should delete a hr account",()=>{
 removeUser(user3)
 //The deleted user shouldn't be in the array anymore
-expect(arr_hr[0]).toBe(undefined);
+expect(arr_hr).toEqual([]);
 
 //The users that we didn't delete should be in the array still
-expect(arr_students[0]).not.toBe(undefined);
-expect(arr_inspector[0]).not.toBe(undefined);
+expect(arr_students[0]).toBe(user1);
+expect(arr_inspector[0]).toBe(user2);
 
 })
