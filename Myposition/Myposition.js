@@ -12,78 +12,72 @@ let emailCInput = document.getElementById("EmailCInput");
 let company = document.getElementById("Company");
 let user = JSON.parse(sessionStorage.getItem("current_user")) || [];
 
-
 form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    formValidation();
+  e.preventDefault();
+  formValidation();
 });
 
-
 let formValidation = () => {
-    if (textInput.value === "") {
-        console.log("failure");
-        msg.innerHTML = "Should be filled";
-    } else {
-        console.log("success");
-        msg.innerHTML = "";
-        acceptData();
-        add.setAttribute("data-bs-dismiss", "modal");
-        add.click();
+  if (textInput.value === "") {
+    console.log("failure");
+    msg.innerHTML = "Should be filled";
+  } else {
+    console.log("success");
+    msg.innerHTML = "";
+    acceptData();
+    add.setAttribute("data-bs-dismiss", "modal");
+    add.click();
 
-        (() => {
-            add.setAttribute("data-bs-dismiss", "");
-        })()
-    }
+    (() => {
+      add.setAttribute("data-bs-dismiss", "");
+    })();
+  }
 };
 
 let data = [];
 let HR = [];
 
-
-
 let acceptData = () => {
-    let flag=0;
-    data.push({
-        text: textInput.value,
-        date: dateInput.value,
-        description: textarea.value,
-        email: EmailInput.value,
-        city: cityInput.value,
-        filed: filedlInput.value,
-        emailC: emailCInput.value,
-        company: company.value,
+  let flag = 0;
+  data.push({
+    text: textInput.value,
+    date: dateInput.value,
+    description: textarea.value,
+    email: EmailInput.value,
+    city: cityInput.value,
+    filed: filedlInput.value,
+    emailC: emailCInput.value,
+    company: company.value,
+  });
+
+  HR.forEach((element) => {
+    if (element["emailC"] == emailCInput.value) {
+      flag++;
+    }
+  });
+  if (flag == 0) {
+    localStorage.setItem("data", JSON.stringify(data));
+    HR.push({
+      company: company.value,
+      emailC: emailCInput.value,
+      password: generateP(),
+      city: cityInput.value,
+      about: "",
     });
+    localStorage.setItem("HR", JSON.stringify(HR));
+  }
 
-    HR.forEach((element) => {
-        if (element["emailC"] == emailCInput.value) {
-            flag++;
-        }
-    })
-        if(flag==0){
-            localStorage.setItem("data", JSON.stringify(data));
-            HR.push({
-                company: company.value,
-                emailC: emailCInput.value,
-                password: generateP(),
-                city:cityInput.value,
-                about:"",
-            });
-            localStorage.setItem("HR", JSON.stringify(HR));
-        }
-    
-
-    console.log(data);
-    console.log(HR);
-    createTasks();
+  console.log(data);
+  console.log(HR);
+  createTasks();
 };
 
-
 let createTasks = () => {
-    let username = user.username;
-    tasks.innerHTML = "";
-    data.map((x, y) => {
-        if (x.email == username) {
-            return (tasks.innerHTML += `
+  let username = user.username;
+  tasks.innerHTML = "";
+  data.map((x, y) => {
+    if (x.email == username) {
+      return (tasks.innerHTML += `
         <div id=${y}>
             <span class="small text-secondary">${x.email}</span>
             <span class="small text-secondary">${x.date}</span>
@@ -100,78 +94,70 @@ let createTasks = () => {
             </div>
         
         `);
-        }
-
-    })
+    }
+  });
 };
 
 let deleteTask = (e) => {
-    e.parentElement.parentElement.remove();
-    data.splice(e.parentElement.parentElement.id, 1);
-    localStorage.setItem("data", JSON.stringify(data));
-    console.log(data);
+  e.parentElement.parentElement.remove();
+  data.splice(e.parentElement.parentElement.id, 1);
+  localStorage.setItem("data", JSON.stringify(data));
+  console.log(data);
 };
 
 let editTask = (e) => {
-    let selectedTask = e.parentElement.parentElement;
-    textInput.value = selectedTask.children[2].innerHTML;
-    cityInput.value = selectedTask.children[3].innerHTML;
-    filedlInput.value = selectedTask.children[4].innerHTML;
-    emailCInput.value = selectedTask.children[7].innerHTML;
-    dateInput.value = selectedTask.children[1].innerHTML;
-    textarea.value = selectedTask.children[5].innerHTML;
-    EmailInput.value = selectedTask.children[0].innerHTML;
-    company.value = selectedTask.children[6].innerHTML;
+  let selectedTask = e.parentElement.parentElement;
+  textInput.value = selectedTask.children[2].innerHTML;
+  cityInput.value = selectedTask.children[3].innerHTML;
+  filedlInput.value = selectedTask.children[4].innerHTML;
+  emailCInput.value = selectedTask.children[7].innerHTML;
+  dateInput.value = selectedTask.children[1].innerHTML;
+  textarea.value = selectedTask.children[5].innerHTML;
+  EmailInput.value = selectedTask.children[0].innerHTML;
+  company.value = selectedTask.children[6].innerHTML;
 
-    deleteTask(e);
+  deleteTask(e);
 };
-
 
 let resetForm = () => {
-
-    textInput.value = "";
-    dateInput.value = "";
-    textarea.value = "";
-    EmailInput.value = "";
-
+  textInput.value = "";
+  dateInput.value = "";
+  textarea.value = "";
+  EmailInput.value = "";
 };
 
-
 (() => {
-    data = JSON.parse(localStorage.getItem("data")) || [];
-    HR = JSON.parse(localStorage.getItem("HR")) || [];
-    createTasks();
-    console.log(data);
-    console.log(HR)
+  data = JSON.parse(localStorage.getItem("data")) || [];
+  HR = JSON.parse(localStorage.getItem("HR")) || [];
+  createTasks();
+  console.log(data);
+  console.log(HR);
 })();
 
 function generateP() {
-    var pass = '';
-    var str = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' +
-        'abcdefghijklmnopqrstuvwxyz0123456789@#$';
+  var pass = "";
+  var str =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZ" + "abcdefghijklmnopqrstuvwxyz0123456789@#$";
 
-    for (let i = 1; i <= 8; i++) {
-        var char = Math.floor(Math.random()
-            * str.length + 1);
+  for (let i = 1; i <= 8; i++) {
+    var char = Math.floor(Math.random() * str.length + 1);
 
-        pass += str.charAt(char)
-    }
+    pass += str.charAt(char);
+  }
 
-    return pass;
+  return pass;
 }
 
-
 function sendEmail() {
-    Email.send({
-        Host: "smtp.gmail.com",
-        Username: "jobwhispper17@gmail.com",
-        Password: "6436974+J",
-        To: document.getElementById("EmailCInput").value,
-        From: "jobwhispper17@gmail.com",
-        Subject: "Sending Email using javascript",
-        Body: "Well that was easy!!",
-    })
-        .then(function (message) {
-            alert("mail sent successfully")
-        });
+  Email.send({
+    Host: "smtp.gmail.com",
+    Username: "jobwhispper17@gmail.com",
+    Password: "6436974+J",
+    To: document.getElementById("EmailCInput").value,
+    From: "jobwhispper17@gmail.com",
+    Subject: "Sending email using javascript",
+    Body: "Well that was easy!!",
+  }).then(function (message) {
+    alert("mail sent successfully");
+  });
 }
