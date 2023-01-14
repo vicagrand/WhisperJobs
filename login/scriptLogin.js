@@ -8,7 +8,7 @@ console.log(module.exports);
 function checkPassword(password){
   //Password must be 8 to 15 characters which contain at least one lowercase letter,
   //one uppercase letter, one numeric digit, and one special character
-  var passw = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
+  var passw = /^(?=.\d)(?=.[a-z])(?=.[A-Z])(?=.[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
   
   if(password.match(passw)){
     return true;
@@ -44,10 +44,9 @@ function checkInput(question,email,newpassword){
   });
 
   arr_hr.forEach((element) => {
-    if (element["username"] == email) {
+    if (element["emailC"] == email) {
       if(element["question"] == question){
       element["password"] = newpassword;
-      element["confirm_password"] = newpassword;
       localStorage.setItem( "HR",JSON.stringify(element));  
       window.location.href = "../login/login_n.html";
       }
@@ -81,10 +80,10 @@ function signinaction(event) {
   });
 
   arr_hr.forEach((element) => {
-    if (element["username"] == loginEmail && element["password"] == loginPass) {
+    if (element["emailC"] == loginEmail && element["password"] == loginPass) {
       flag = 1;
       sessionStorage.setItem("current_user", JSON.stringify(element));
-      window.location.href = "../edit profile/editprofile.html";
+      window.location.href = "../MenuHR/menuhr.html";
     }
   });
   if (flag == 0) {

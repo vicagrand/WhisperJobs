@@ -5,7 +5,6 @@ let textarea = document.getElementById("textarea");
 let msg = document.getElementById("msg");
 let tasks = document.getElementById("tasks");
 let add = document.getElementById("add");
-let EmailInput = document.getElementById("EmailInput");
 let cityInput = document.getElementById("CityInput");
 let filedlInput = document.getElementById("FiledInput");
 let emailCInput = document.getElementById("EmailCInput");
@@ -36,56 +35,40 @@ let formValidation = () => {
     }
 };
 
-let data = [];
-let HR = [];
+let dataHR=[];
+let data=[];
+
 
 
 
 let acceptData = () => {
     let flag=0;
-    data.push({
+    dataHR.push({
         text: textInput.value,
         date: dateInput.value,
         description: textarea.value,
-        email: EmailInput.value,
         city: cityInput.value,
         filed: filedlInput.value,
         emailC: emailCInput.value,
         company: company.value,
     });
 
-    HR.forEach((element) => {
-        if (element["emailC"] == emailCInput.value) {
-            flag++;
-        }
-    })
-        if(flag==0){
-            localStorage.setItem("data", JSON.stringify(data));
-            HR.push({
-                company: company.value,
-                emailC: emailCInput.value,
-                password: generateP(),
-                city:cityInput.value,
-                about:"",
-            });
-            localStorage.setItem("HR", JSON.stringify(HR));
-        }
+    localStorage.setItem("dataHR", JSON.stringify(dataHR));
+    
     
 
-    console.log(data);
-    console.log(HR);
+    console.log(dataHR);
     createTasks();
 };
 
 
 let createTasks = () => {
-    let username = user.username;
+    let username = user.emailC;
     tasks.innerHTML = "";
-    data.map((x, y) => {
-        if (x.email == username) {
+    dataHR.map((x, y) => {
+        if (x.emailC == username) {
             return (tasks.innerHTML += `
         <div id=${y}>
-            <span class="small text-secondary">${x.email}</span>
             <span class="small text-secondary">${x.date}</span>
             <span class="fw-bold">${x.text}</span>
             <span class="small text-secondary">${x.city}</span>
@@ -103,6 +86,28 @@ let createTasks = () => {
         }
 
     })
+    data.map((x, y) => {
+        if (x.emailC == username) {
+            return (tasks.innerHTML += `
+        <div id=${y}>
+            <span class="small text-secondary">${x.date}</span>
+            <span class="fw-bold">${x.text}</span>
+            <span class="small text-secondary">${x.city}</span>
+            <span class="small text-secondary">${x.filed}</span>
+            <p>${x.description}</p>
+            <span class="small text-secondary">${x.company}</span>
+            <span class="small text-secondary">${x.emailC}</span>
+            <span class="options">
+                <i onClick ="editTask(this)" data-bs-toggle="modal" data-bs-target="#form" class="fa fa-edit"></i>
+                <i onClick ="deleteTask(this);createTasks()" class="fa fa-trash-alt"></i>
+            </span>
+            </div>
+        
+        `);
+        }
+
+    })
+
 };
 
 let deleteTask = (e) => {
@@ -114,14 +119,13 @@ let deleteTask = (e) => {
 
 let editTask = (e) => {
     let selectedTask = e.parentElement.parentElement;
-    textInput.value = selectedTask.children[2].innerHTML;
-    cityInput.value = selectedTask.children[3].innerHTML;
-    filedlInput.value = selectedTask.children[4].innerHTML;
-    emailCInput.value = selectedTask.children[7].innerHTML;
-    dateInput.value = selectedTask.children[1].innerHTML;
-    textarea.value = selectedTask.children[5].innerHTML;
-    EmailInput.value = selectedTask.children[0].innerHTML;
-    company.value = selectedTask.children[6].innerHTML;
+    textInput.value = selectedTask.children[1].innerHTML;
+    cityInput.value = selectedTask.children[2].innerHTML;
+    filedlInput.value = selectedTask.children[3].innerHTML;
+    emailCInput.value = selectedTask.children[6].innerHTML;
+    dateInput.value = selectedTask.children[0].innerHTML;
+    textarea.value = selectedTask.children[4].innerHTML;
+    company.value = selectedTask.children[5].innerHTML;
 
     deleteTask(e);
 };
@@ -132,46 +136,17 @@ let resetForm = () => {
     textInput.value = "";
     dateInput.value = "";
     textarea.value = "";
-    EmailInput.value = "";
+    cityInput="";
+    filedlInput="";
 
 };
 
 
 (() => {
+    dataHR = JSON.parse(localStorage.getItem("dataHR")) || [];
     data = JSON.parse(localStorage.getItem("data")) || [];
-    HR = JSON.parse(localStorage.getItem("HR")) || [];
     createTasks();
+    console.log(dataHR);
     console.log(data);
-    console.log(HR)
 })();
 
-function generateP() {
-    var pass = '';
-    var str = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' +
-        'abcdefghijklmnopqrstuvwxyz0123456789@#$';
-
-    for (let i = 1; i <= 8; i++) {
-        var char = Math.floor(Math.random()
-            * str.length + 1);
-
-        pass += str.charAt(char)
-    }
-
-    return pass;
-}
-
-
-function sendEmail() {
-    Email.send({
-        Host: "smtp.gmail.com",
-        Username: "jobwhispper17@gmail.com",
-        Password: "6436974+J",
-        To: document.getElementById("EmailCInput").value,
-        From: "jobwhispper17@gmail.com",
-        Subject: "Sending Email using javascript",
-        Body: "Well that was easy!!",
-    })
-        .then(function (message) {
-            alert("mail sent successfully")
-        });
-}

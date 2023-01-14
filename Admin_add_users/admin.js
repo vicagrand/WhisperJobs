@@ -1,3 +1,4 @@
+
 let arr_students =
   JSON.parse(localStorage.getItem("Students and Graduates")) || [];
 let arr_hr = JSON.parse(localStorage.getItem("HR")) || [];
@@ -22,10 +23,9 @@ function checkPassword(password) {
   return false;
 }
 
-function checkEmail(email, type) {
-  if (
-    email.includes("@ac.sce.ac.il") && type == "student_graduate"
-  ) {
+
+function checkEmail(email){
+  if (email.includes("@ac.sce.ac.il")){ 
     return true;
   }
   warning = `You are not a student!`;
@@ -46,14 +46,14 @@ function checkLocal() {
 }
 
 function declareEvents() {
-  
   let add_btn = document.querySelector("#signupbtn");
-  add_btn.addEventListener("click", function () {
+  add_btn.addEventListener("click", function (){
     event.preventDefault();
     id_warning.innerHTML = "";
     let email = document.querySelector("#email_username").value.toLowerCase();
     //email = email.toLowerCase();
     let password = document.querySelector("#Password").value;
+    if (checkEmail(email) && checkPassword(password)) {
     let type = document.querySelector("#type").value;
     if (checkEmail(email,type) && checkPassword(password)) {
       let obj = {
@@ -64,6 +64,8 @@ function declareEvents() {
         question: document
           .querySelector("#Safety_question")
           .value.toLowerCase(),
+        type: document.querySelector("#type").value,
+        //new
         type: type,
         about_you: "",
         location: "",
@@ -100,21 +102,38 @@ function declareEvents() {
         id_warning.innerHTML += `${warning}`;
         return;
       }
+<<<<<<< HEAD:login/scriptRegister.js
       arr_students.push(obj);
       localStorage.setItem("Students and Graduates",JSON.stringify(arr_students));
+=======
+
+      if (obj.type == "student_graduate") {
+        arr_students.push(obj);
+        localStorage.setItem(
+          "Students and Graduates",
+          JSON.stringify(arr_students)
+        );
+      } 
+      else if (obj.type == "hr") {
+        arr_hr.push(obj);
+        localStorage.setItem("HR", JSON.stringify(arr_hr));
+      } 
+      else if (obj.type == "inspector") {
+        arr_inspector.push(obj);
+        localStorage.setItem("Inspectors", JSON.stringify(arr_inspector));
+      }
+
+>>>>>>> origin/yovel:Admin_add_users/admin.js
       window.location.href = "../login/login_n.html";
     }
     id_warning.innerHTML = `${warning}`;
-    // elseif: {
-    //   let warning = "you are not a student!";
-    //   id_warning.innerHTML += `${warning}`;
-    // }
-  });
-}
+  };})}
 
-module.exports = {
-  checkLocal: checkLocal,
-  declareEvents: declareEvents,
-  checkEmail: checkEmail,
-  checkPassword: checkPassword,
-};
+
+// module.exports = {
+//   checkLocal: checkLocal,
+//   declareEvents: declareEvents,
+//   checkEmail: checkEmail,
+//   checkPassword: checkPassword,
+// };
+
