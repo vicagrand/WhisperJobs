@@ -11,9 +11,9 @@ let user = {
   about_you: "about",
   location: "dimona",
   education: "degree",
-  jobTitle: "bullshit",
+  jobTitle: "job",
   lookingForWork: "no",
-  type:'inspector'
+  type: 'inspector'
 };
 beforeEach(() => {
   // Set up the DOM for testing
@@ -31,7 +31,7 @@ beforeEach(() => {
   id_warning.innerHTML = "";
 
 });
-function displayProfile(){
+function displayProfile() {
   let full_name = arr_inspector[0].full_name;
   document.getElementById("fname").placeholder = `${full_name}`;
   let about_you = arr_inspector[0].about_you;
@@ -45,9 +45,9 @@ function displayProfile(){
   let jobTitle = arr_inspector[0].jobTitle;
   document.getElementById("position").placeholder = `${jobTitle}`;
 }
-function updateProfile(){
+function updateProfile() {
   if (document.querySelector("#fname").value != "")
-  user.full_name = document.querySelector("#fname").value;
+    user.full_name = document.querySelector("#fname").value;
   if (document.querySelector("#about_you").value != "")
     user.about_you = document.querySelector("#about_you").value;
   if (document.querySelector("#location").value != "")
@@ -76,25 +76,25 @@ function updateProfile(){
         element = user;
       }
     })
-  }   
+  }
 }
-describe('displayProfile',()=>{
-it('Should display the user details on the screen', () => {
- 
-  //call the function
-  displayProfile();
+describe('displayProfile', () => {
+  it('Should display the user details on the screen', () => {
 
-  //Check that it was updated and this should be displayed on the screen
-  expect(document.getElementById("fname").placeholder).toEqual("jack");
-  expect(document.getElementById("about_you").placeholder).toEqual('about');
-  expect(document.getElementById("location").placeholder).toEqual('dimona');
-  expect(document.getElementById("email").innerHTML).toEqual('jack@ac.sce.ac.il');
-  expect(document.getElementById("qualification").placeholder).toEqual('degree');
-  expect(document.getElementById("position").placeholder).toEqual('bullshit');
+    //call the function
+    displayProfile();
+
+    //Check that it was updated and this should be displayed on the screen
+    expect(document.getElementById("fname").placeholder).toEqual("jack");
+    expect(document.getElementById("about_you").placeholder).toEqual('about');
+    expect(document.getElementById("location").placeholder).toEqual('dimona');
+    expect(document.getElementById("email").innerHTML).toEqual('jack@ac.sce.ac.il');
+    expect(document.getElementById("qualification").placeholder).toEqual('degree');
+    expect(document.getElementById("position").placeholder).toEqual('job');
+  });
 });
-});
-describe('updateProfile',()=>{
-it('should update the user details in storage', () => {
+describe('updateProfile', () => {
+  it('should update the user details in storage', () => {
     //call the function
     updateProfile();
 
@@ -104,5 +104,5 @@ it('should update the user details in storage', () => {
     expect(arr_inspector[0].education).toEqual('many degrees');
     expect(arr_inspector[0].jobTitle).toEqual('workee');
     expect(arr_inspector[0].lookingForWork).toEqual('no');
-});
+  });
 });
