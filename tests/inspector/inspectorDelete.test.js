@@ -11,6 +11,15 @@ document.body.innerHTML = `
 <label class="warning" id="id_warning"></label>
 `;
 
+//set up the window object
+global.window = Object.create(window);
+Object.defineProperty(window, 'location', {
+    value: {
+    href: ''
+    }
+})
+let url = ''
+
 // Set up the Users for testing
 let user1 = {
   username: 'student@ac.sce.ac.il',
@@ -64,8 +73,10 @@ function removeUser(user) {
         }
       }
     }
+    url = "../login/login_n.html"
+    window.location.href = url
   };
-
+describe("removeUser",()=>{
 it("Should delete an inspector account",()=>{
 removeUser(user2)
 //The deleted user shouldn't be in the array anymore
@@ -74,5 +85,13 @@ expect(arr_inspector[0]).toBe(undefined);
 //The users that we didn't delete should be in the array still
 expect(arr_students[0]).not.toBe(undefined);
 expect(arr_hr[0]).not.toBe(undefined);
-
 })
+it("Should redirect to the login page after successful delete",()=>{
+
+  //call the function
+  removeUser(user2)
+  //redirect to the login page
+  expect(window.location.href).toBe("../login/login_n.html");
+  
+})
+});

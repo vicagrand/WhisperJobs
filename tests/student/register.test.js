@@ -1,6 +1,16 @@
 let arr_students = [];
 let arr_hr = [];
 let arr_inspector = [];
+
+//set up the window object
+global.window = Object.create(window);
+Object.defineProperty(window, 'location', {
+    value: {
+    href: ''
+    }
+})
+let url = ''
+
 // Set up the DOM for testing
 document.body.innerHTML = `
 <input id="email_username" value="student@ac.sce.ac.il">
@@ -88,17 +98,6 @@ function register() {
           flag = 1;
         }
       });
-      arr_inspector.forEach((element) => {
-        if (element["username"] == obj.username) {
-          flag = 1;
-        }
-      });
-
-      arr_hr.forEach((element) => {
-        if (element["username"] == obj.username) {
-          flag = 1;
-        }
-      });
       if (flag == 1) {
         id_warning.innerHTML = "Account already exists!";
         return;
@@ -106,6 +105,8 @@ function register() {
 
       if (obj.type == "student_graduate") {
         arr_students.push(obj);
+        url = "../login/login_n.html"
+        window.location.href = url
     }
   };
 }
@@ -130,6 +131,11 @@ it('Shouldnt be able to make 2 accounts',()=>{
   //then we activate the function again
   register();
   expect(id_warning.innerHTML).toBe('Account already exists!')
+})
+it("Should redirect to login window after successful register",()=>{
+  //call the function
+  register();
+  expect(window.location.href).toEqual("../login/login_n.html");
 })
 it('Passwords should match',()=>{
   //set up the confirm_pass element to be different than pass

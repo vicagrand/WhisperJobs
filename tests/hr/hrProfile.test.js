@@ -11,7 +11,7 @@ let user = {
   about_you: "about",
   location: "dimona",
   education: "degree",
-  jobTitle: "bull****",
+  jobTitle: "job",
   lookingForWork: "no",
   type:'hr'
 };
@@ -59,6 +59,6 @@ it('Should display the user details on the screen', () => {
   expect(document.getElementById("location").placeholder).toEqual('dimona');
   expect(document.getElementById("email").innerHTML).toEqual('jack@gmail.com');
   expect(document.getElementById("qualification").placeholder).toEqual('degree');
-  expect(document.getElementById("position").placeholder).toEqual('bull****');
+  expect(document.getElementById("position").placeholder).toEqual('job');
 });
 });

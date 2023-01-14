@@ -2,6 +2,16 @@ let arr_students = [];
 let arr_hr = [];
 let arr_inspector = [];
 let flag;
+
+//set up the window object
+global.window = Object.create(window);
+Object.defineProperty(window, 'location', {
+    value: {
+    href: ''
+    }
+})
+let url = ''
+
 // Set up the DOM for testing
 document.body.innerHTML = `
 <input id="Password" value="12345Aa!">
@@ -64,8 +74,10 @@ function removeUser(user) {
         }
       }
     }
+    url = "../login/login_n.html"
+    window.location.href = url
   };
-
+describe('removeUser',()=>{
 it("Should delete a hr account",()=>{
 removeUser(user3)
 //The deleted user shouldn't be in the array anymore
@@ -76,3 +88,12 @@ expect(arr_students[0]).toBe(user1);
 expect(arr_inspector[0]).toBe(user2);
 
 })
+it("Should redirect to the login page after successful delete",()=>{
+
+  //call the function
+  removeUser(user2)
+  //redirect to the login page
+  expect(window.location.href).toBe("../login/login_n.html");
+  
+})
+});
