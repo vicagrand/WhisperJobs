@@ -6,10 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile Page</title>
     <link rel="stylesheet" href="profilepage.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
 
-    <script src="profilepage.js"></script>
+    
     <div class="inner_page_agile">
       <h3>Profile Page</h3>
       <p>Here you can check important information</p>
@@ -31,53 +32,56 @@
     </div>
 
     
-        <div class="container">
-            <div class="panel panel-info">
-                <div class="panel-heading">           
-                    <div class="panel-title">
-                    <h3 class="text-center">Phone Book</h3>          
-                    </div>      
+    <main>
+        <section id="contact-display">
+            <h2 class="contacts">Contacts</h2>
+            <table>
+                <tbody><tr id="head">
+                    </tr></tbody><thead>
+                        <tr>
+                        <th>Name</th>
+                        <th>Working time</th>
+                        <th>Telephone</th>
+                        <th>Email</th>
+                        <th>Website</th>
+                    </tr></thead>
+                
+                <tbody id="data">
+                    
+                </tbody>
+            </table>
+        </section>
+        <section id="new-contact">
+            <h2>Create a new contact</h2>
+            <form>
+                <div>
+                    <label for="name">Name:</label>
+                    <input id="name" type="text" maxlength="15" required="">
                 </div>
-
-                <div class="panel-body">
-                <form class="form-horizontal">
-                    <div class="form-group has-info has-feedback">
-                        <label for="seacrh" class="search">Search: </label>
-                        <div class="inpsearch">
-                            <input type="text"  name="search" ng-model ="test" class="form-control">
-                            <span class="glyphicon glyphicon-search form-control-feedback"></span>                                            
-                        </div>
-                    </div>
-                </form> 
-                  <div class="table-responsive">
-                    <table class="table table-striped">
-                      <thead>
-                        <tr class="info">
-                            <th>Contacts</th>
-                        </tr>
-                       </thead>
-                    </table>
-                  </div>
+                <div>
+                    <label for="add">Working time:</label>
+                    <input id="add" type="text" maxlength="30" required="">
                 </div>
-                <div class="panel-footer">
-                    <form class="form-inline">
-                        <div class="form-group">
-                            <span>Name：</span>
-                            <input type="text" class="form-control" ng-model="newName" >
-                        </div>
-                        <div class="form-group">
-                            <span>Tel or Email：</span>
-                            <input type="text" class="form-control" ng-model="newTel" >
-                        </div> 
-                        <input type="button" class="btnadd" value="Add"ng-click="addItem()">       
-                    </form>            
+                <div>
+                    <label for="tel">Telephone:</label>
+                    <input id="tel" type="tel" maxlength="15" required="">
                 </div>
-            </div>   
-        </div>
-
-
+                <div>
+                    <label for="email">Email:</label>
+                    <input id="email" type="email" maxlength="30" required="">
+                </div>
+                <div>
+                    <label for="url">Website:</label>
+                    <input id="url" type="url" maxlength="20">
+                </div>
+                <div>
+                    <button class="btncreate">Create contacts</button>
+                </div>
+            </form>
+        </section>
+    </main>
     
-
+    <script src="profilepage.js"></script>
 
 
 </body>
