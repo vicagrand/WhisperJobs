@@ -25,10 +25,20 @@ let createTasks = () => {
             <p>${x.description}</p>
             <span class="small text-secondary">${x.company}</span>
             <span class="small text-secondary">${x.emailC}</span>
+                  <span class="options">
+                  <i onClick ="deleteTask(this);createTasks()" class="fa fa-trash-alt"></i>
+              </span>
                 </div>
             
             `);
     })
+};
+
+let deleteTask = (e) => {
+    e.parentElement.parentElement.remove();
+    data.splice(e.parentElement.parentElement.id, 1);
+    localStorage.setItem("data", JSON.stringify(data));
+    console.log(data);
 };
 
 (() => {
@@ -36,7 +46,6 @@ let createTasks = () => {
     createTasks();
     console.log(data);
 })();
-
 
 
 
@@ -55,6 +64,9 @@ function search() {
         <p>${x.description}</p>
         <span class="small text-secondary">${x.company}</span>
         <span class="small text-secondary">${x.emailC}</span>
+        <span class="options">
+        <i onClick ="deleteTask(this);createTasks()" class="fa fa-trash-alt"></i>
+    </span>
             </div>
         
         `);
@@ -68,13 +80,3 @@ function search() {
 
 
 console.log(data);
-
-
-
-
-
-
-
-
-
-
