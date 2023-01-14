@@ -73,7 +73,7 @@ function ban_userS() {
       );
     }
   }
-}
+};
 
 function ban_userH() {
   let username = document.getElementById("ema").innerHTML;
