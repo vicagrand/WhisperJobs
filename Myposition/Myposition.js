@@ -59,7 +59,7 @@ let acceptData = () => {
     localStorage.setItem("data", JSON.stringify(data));
     HR.push({
       company: company.value,
-      emailC: emailCInput.value,
+      emailC: emailCInput.value.toLowerCase(),
       password: generateP(),
       city: cityInput.value,
       about: "",
