@@ -9,7 +9,7 @@ function checkPassword(password) {
   //Password must be 8 to 15 characters which contain at least one lowercase letter,
   //one uppercase letter, one numeric digit, and one special character
   var passw = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
-
+  console.log(passw);
   if (password.match(passw)) {
     return true;
   }
@@ -26,7 +26,7 @@ function checkInput(question, email, newpassword) {
         //if question is equal update the new password
         element["password"] = newpassword; //update password
         element["confirm_password"] = newpassword;
-        localStorage.setItem("Students and Graduates", JSON.stringify(element)); //update local storage
+        localStorage.setItem("Students and Graduates", JSON.stringify(arr_students)); //update local storage
         window.location.href = "../login/login_n.html"; //move to login page
       }
     }
@@ -36,7 +36,7 @@ function checkInput(question, email, newpassword) {
       if (element["question"] == question) {
         element["password"] = newpassword;
         element["confirm_password"] = newpassword;
-        localStorage.setItem("Inspectors", JSON.stringify(element));
+        localStorage.setItem("Inspectors", JSON.stringify(arr_inspector));
         window.location.href = "../login/login_n.html";
       } else {
         return;
@@ -48,7 +48,7 @@ function checkInput(question, email, newpassword) {
     if (element["emailC"] == email) {
       if (element["question"] == question) {
         element["password"] = newpassword;
-        localStorage.setItem("HR", JSON.stringify(element));
+        localStorage.setItem("HR", JSON.stringify(arr_hr));
         window.location.href = "../login/login_n.html";
       } else {
         return;
@@ -94,6 +94,7 @@ function signinaction(event) {
 }
 
 function changepassword(event) {
+  //localStorage.clear();
   event.preventDefault();
   const email = document.getElementById("emailUser").value.toLowerCase();
   const question = document
