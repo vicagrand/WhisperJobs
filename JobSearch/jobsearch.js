@@ -29,12 +29,31 @@ let createTasks = () => {
             
             `);
     })
+    dataHR.map((x,y) => {
+            return (tasks.innerHTML += `
+        <div id=${y}>
+            <span class="small text-secondary">${x.date}</span>
+            <span class="fw-bold">${x.text}</span>
+            <span class="small text-secondary">${x.city}</span>
+            <span class="small text-secondary">${x.filed}</span>
+            <p>${x.description}</p>
+            <span class="small text-secondary">${x.company}</span>
+            <span class="small text-secondary">${x.emailC}</span>
+
+            </div>
+        
+        `);
+       
+
+    })
 };
 
 (() => {
     data = JSON.parse(localStorage.getItem("data")) || [];
+    dataHR = JSON.parse(localStorage.getItem("dataHR")) || [];
     createTasks();
     console.log(data);
+    console.log(dataHR);
 })();
 
 
