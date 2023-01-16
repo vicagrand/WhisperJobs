@@ -15,7 +15,7 @@ let createTasks = () => {
         <span class="small text-secondary" >${x.full_name}</span>
         <span class="small text-secondary" id=full>${x.username}</span>
         <span class="options">
-        <i onClick ="ban_user(this);createTasks()" class="fa fa-trash-alt"></i>
+        <i onClick ="ban_userS(this);createTasks()" class="fa fa-trash-alt"></i>
     </span>
       </div>
   
@@ -24,6 +24,7 @@ let createTasks = () => {
   })
   HR.map((x, y) => {
     if (x.enailC != "") {
+      if (x.company != ""){
       return (tasks.innerHTML += `
     <div id=${y}>
          <span class="small text-secondary" >${x.company}</span>
@@ -34,7 +35,7 @@ let createTasks = () => {
         </div>
     
     `);
-    }
+    }}
   })
 };
 

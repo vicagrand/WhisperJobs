@@ -32,6 +32,26 @@ let createTasks = () => {
             
             `);
     })
+    dataHR.map((x, y) => {
+        return (tasks.innerHTML += `
+    <div id=${y}>
+        <span class="small text-secondary">${x.date}</span>
+        <span class="fw-bold">${x.text}</span>
+        <span class="small text-secondary">${x.city}</span>
+        <span class="small text-secondary">${x.filed}</span>
+        <p>${x.description}</p>
+        <span class="small text-secondary">${x.company}</span>
+        <span class="small text-secondary">${x.emailC}</span>
+        <span class="options">
+        <i onClick ="deleteTaskHR(this);createTasks()" class="fa fa-trash-alt"></i>
+    </span>
+
+        </div>
+    
+    `);
+
+
+    })
 };
 
 let deleteTask = (e) => {
@@ -40,11 +60,18 @@ let deleteTask = (e) => {
     localStorage.setItem("data", JSON.stringify(data));
     console.log(data);
 };
-
+let deleteTaskHR = (e) => {
+    e.parentElement.parentElement.remove();
+    dataHR.splice(e.parentElement.parentElement.id, 1);
+    localStorage.setItem("dataHR", JSON.stringify(dataHR));
+    console.log(dataHR);
+};
 (() => {
     data = JSON.parse(localStorage.getItem("data")) || [];
+    dataHR = JSON.parse(localStorage.getItem("dataHR")) || [];
     createTasks();
     console.log(data);
+    console.log(dataHR);
 })();
 
 
@@ -80,3 +107,4 @@ function search() {
 
 
 console.log(data);
+console.log(dataHR);
